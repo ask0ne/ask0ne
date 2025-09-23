@@ -212,6 +212,143 @@ html:not(.dark) .skill-tag {
     to { transform: rotate(360deg); }
 }
 
+/* Blog styling - Default to dark mode */
+.blog-post-card {
+    border-color: var(--dark-accent);
+    transition: all 0.2s ease;
+}
+
+html:not(.dark) .blog-post-card {
+    border-color: var(--light-accent);
+}
+
+.blog-post-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.blog-post-link:hover {
+    opacity: 0.8;
+}
+
+.blog-post-title {
+    color: var(--dark-accent);
+    margin: 0;
+}
+
+html:not(.dark) .blog-post-title {
+    color: var(--light-accent);
+}
+
+.blog-post-preview {
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+html:not(.dark) .blog-post-preview {
+    color: var(--light-text);
+}
+
+.blog-tag {
+    background-color: rgba(216, 164, 127, 0.1);
+    border: 1px solid var(--dark-accent);
+    color: var(--dark-accent);
+    transition: all 0.2s ease;
+}
+
+html:not(.dark) .blog-tag {
+    background-color: rgba(216, 164, 127, 0.1);
+    border-color: var(--light-accent);
+    color: var(--light-accent);
+}
+
+.blog-tag:hover {
+    background-color: var(--dark-accent);
+    color: var(--dark-bg);
+}
+
+html:not(.dark) .blog-tag:hover {
+    background-color: var(--light-accent);
+    color: var(--light-bg);
+}
+
+.blog-back-btn {
+    color: var(--accent-colour2);
+    text-decoration: none;
+}
+
+.blog-back-btn:hover {
+    opacity: 0.8;
+}
+
+.blog-detail-content {
+    max-width: 100%;
+    color: var(--dark-text);
+}
+
+html:not(.dark) .blog-detail-content {
+    color: var(--light-text);
+}
+
+.blog-detail-title {
+    color: var(--dark-accent);
+    line-height: 1.3;
+}
+
+html:not(.dark) .blog-detail-title {
+    color: var(--light-accent);
+}
+
+.blog-detail-meta {
+    color: var(--dark-text);
+}
+
+html:not(.dark) .blog-detail-meta {
+    color: var(--light-text);
+}
+
+.blog-detail-text {
+    color: var(--dark-text);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+html:not(.dark) .blog-detail-text {
+    color: var(--light-text);
+}
+
+/* Blog form styling - Default to dark mode */
+.blog-form-label {
+    color: var(--dark-text);
+}
+
+html:not(.dark) .blog-form-label {
+    color: var(--light-text);
+}
+
+.blog-form-input {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-accent);
+}
+
+.blog-form-input:focus {
+    border-color: var(--accent-colour2);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(216, 164, 127, 0.2);
+}
+
+html:not(.dark) .blog-form-input {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    border-color: var(--light-accent);
+}
+
+html:not(.dark) .blog-form-input:focus {
+    border-color: var(--accent-colour2);
+    box-shadow: 0 0 0 2px rgba(240, 93, 94, 0.2);
+}
+
 /* Mobile menu */
 .mobile-menu {
     display: none;
@@ -224,5 +361,13 @@ html:not(.dark) .skill-tag {
     
     .mobile-menu.show {
         display: block;
+    }
+    
+    .blog-detail-title {
+        font-size: 1.8rem;
+    }
+    
+    .blog-detail-text {
+        font-size: 1rem;
     }
 }

@@ -135,7 +135,7 @@ class BlogDatabase:
 
     @staticmethod
     def search_posts(search_term: str) -> List[BlogPost]:
-        """Search blog posts by text content"""
+        """Search blog posts by text content and title"""
         conn = BlogDatabase._get_connection()
         if not conn:
             return []
@@ -145,9 +145,10 @@ class BlogDatabase:
                 cur.execute("""
                     SELECT id, created_at, data 
                     FROM blog 
-                    WHERE data->>'text' ILIKE %s
+                    WHERE data->>'text' ILIKE %s 
+                    OR data->>'title' ILIKE %s
                     ORDER BY created_at DESC
-                """, (f'%{search_term}%',))
+                """, (f'%{search_term}%', f'%{search_term}%'))
                 rows = cur.fetchall()
                 
                 posts = []

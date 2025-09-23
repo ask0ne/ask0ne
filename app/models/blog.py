@@ -4,7 +4,7 @@ from datetime import datetime
 
 class BlogPostData(BaseModel):
     """JSONB data structure for blog posts"""
-    title: str = Field(..., description="The title of the blog post")
+    title: Optional[str] = Field(None, description="The title of the blog post")
     text: str = Field(..., description="The blog post content")
     tags: List[str] = Field(default_factory=list, description="List of tags for the blog post")
 
@@ -13,6 +13,11 @@ class BlogPost(BaseModel):
     id: Optional[int] = None
     created_at: Optional[datetime] = None
     data: BlogPostData
+
+    @property
+    def title(self) -> Optional[str]:
+        """Convenience property to access the blog title"""
+        return self.data.title
 
     @property
     def text(self) -> str:
