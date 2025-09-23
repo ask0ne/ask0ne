@@ -1,0 +1,228 @@
+:root {
+    /* Light mode colors */
+    --light-bg: #E7ECEF;
+    --light-text: #272932;
+    --light-accent: #D8A47F;
+    --accent-colour2: #F05D5E;
+
+    /* Dark mode colors */
+    --dark-bg: #272932;
+    --dark-text: #E7ECEF;
+    --dark-accent: #D8A47F;
+}
+
+/* Dark mode accent_colour2 override */
+.dark {
+    --accent-colour2: #D8A47F;
+}
+
+/* Base styles - Default to dark mode */
+body {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+    min-height: 100vh;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Light mode override */
+html:not(.dark) body {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Navigation - Default to dark mode */
+.nav-container {
+    background-color: var(--dark-bg);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+/* Light mode override */
+html:not(.dark) .nav-container {
+    background-color: var(--light-bg);
+}
+
+/* Links and navigation - Standardized to use accent_colour2 with no underline */
+a[href], 
+.nav-link, 
+.mobile-nav-link,
+.brand {
+    color: var(--accent-colour2);
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+/* Remove any remaining underlines and ensure consistent styling */
+a[href]:link,
+a[href]:visited {
+    text-decoration: none;
+    color: var(--accent-colour2);
+}
+
+/* Maintain hover effects */
+a[href]:hover,
+.nav-link:hover,
+.mobile-nav-link:hover {
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.nav-link {
+    text-transform: lowercase;
+    font-size: 1.2em;
+}
+
+.brand {
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+/* Hover states */
+a[href]:hover,
+.nav-link:hover,
+.mobile-nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Headings - Default to dark mode */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark-accent);
+    font-weight: 700;
+}
+
+/* Light mode override */
+html:not(.dark) h1, 
+html:not(.dark) h2, 
+html:not(.dark) h3, 
+html:not(.dark) h4, 
+html:not(.dark) h5, 
+html:not(.dark) h6 {
+    color: var(--light-accent);
+}
+
+#theme-toggle {
+    padding: 0 1rem;
+}
+
+#mobile-menu-btn {
+    color: var(--dark-accent);
+    transition: opacity 0.2s ease;
+}
+
+#mobile-menu-btn:hover {
+    opacity: 0.8;
+}
+
+html:not(.dark) #mobile-menu-btn {
+    color: var(--light-accent);
+}
+
+/* These styles are now handled by the default dark mode styles above */
+
+/* Buttons - Default to dark mode */
+.btn-primary {
+    background-color: var(--dark-accent);
+    color: var(--dark-bg);
+}
+
+.btn-primary:hover {
+    opacity: 0.8;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--dark-accent);
+    border: 1px solid var(--dark-accent);
+}
+
+.btn-secondary:hover {
+    background-color: var(--dark-accent);
+    color: var(--dark-bg);
+}
+
+html:not(.dark) .btn-primary {
+    background-color: var(--light-accent);
+    color: var(--light-bg);
+}
+
+html:not(.dark) .btn-secondary {
+    color: var(--light-accent);
+    border-color: var(--light-accent);
+}
+
+html:not(.dark) .btn-secondary:hover {
+    background-color: var(--light-accent);
+    color: var(--light-bg);
+}
+
+/* Content sections - Default to dark mode */
+.content-section {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+html:not(.dark) .content-section {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Skill tags - Default to dark mode */
+.skill-tag {
+    background-color: transparent;
+    border: 1px solid var(--dark-accent);
+    color: var(--dark-accent);
+}
+
+html:not(.dark) .skill-tag {
+    border-color: var(--light-accent);
+    color: var(--light-accent);
+}
+
+/* Override framework colors */
+[class*="text-"] {
+    color: inherit !important;
+}
+
+[class*="bg-"] {
+    background-color: inherit !important;
+}
+
+/* Loading indicator */
+.htmx-indicator {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.htmx-request .htmx-indicator,
+.htmx-request.htmx-indicator {
+    opacity: 1;
+}
+
+.loading-spinner {
+    border: 2px solid transparent;
+    border-bottom: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Mobile menu */
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu.show {
+        display: block;
+    }
+}
