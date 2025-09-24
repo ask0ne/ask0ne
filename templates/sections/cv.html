@@ -2,49 +2,142 @@
     <div class="bg-white/50 dark:bg-custom-dark-bg/50 rounded-lg shadow-sm p-6 sm:p-8">
         <!-- Name and Contact (centered) -->
         <div class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-custom-light-heading dark:text-custom-dark-heading">Atharva
+            <h1 class="text-3xl sm:text-4xl font-bold text-custom-light-accent3 dark:text-custom-dark-accent3">Atharva
                 Kawade</h1>
             <div class="mt-2 text-custom-light-text dark:text-custom-dark-text space-y-1">
-                <div>+91 9673757926 &nbsp;|&nbsp;<a href="https://github.com/ask0ne" class="text-custom-light-heading dark:text-custom-dark-heading"
+                <div>+91 9673757926 &nbsp;|&nbsp;<a href="https://github.com/ask0ne"
+                        class="text-custom-light-accent3 dark:text-custom-dark-accent3"
                         target="_blank">github.com/ask0ne</a>&nbsp;|&nbsp;<a href="mailto:atharva.kawade1999@gmail.com"
-                        class="text-custom-light-heading dark:text-custom-dark-heading">atharva.kawade1999@gmail.com</a>&nbsp;|&nbsp;<a
-                        href="https://linkedin.com/in/atharvakawade/" class="text-custom-light-heading dark:text-custom-dark-heading"
+                        class="text-custom-light-accent3 dark:text-custom-dark-accent3">atharva.kawade1999@gmail.com</a>&nbsp;|&nbsp;<a
+                        href="https://linkedin.com/in/atharvakawade/"
+                        class="text-custom-light-accent3 dark:text-custom-dark-accent3"
                         target="_blank">linkedin.com/in/atharvakawade/</a></div>
+            </div>
+
+            <!-- Download resume button -->
+            <div class="mt-4 flex justify-center">
+                <a href="/assets/public/atharvakawade_resume.pdf" download
+                   class="inline-flex items-center gap-2 text-custom-light-accent3 dark:text-custom-dark-accent3 underline decoration-2 underline-offset-4 hover:underline-offset-8 hover:opacity-90 transition"
+                   aria-label="Download resume as PDF">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 10l5 5m0 0 5-5m-5 5V4"/>
+                    </svg>
+                    <span>Download Resume (PDF)</span>
+                </a>
             </div>
         </div>
         <div class="space-y-8">
             <!-- Professional Experience -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-heading dark:text-custom-dark-heading mb-4">
+                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">
                     Experience</h3>
                 <div class="space-y-4">
-                    <div class="border-l-4 border-custom-light-accent1 dark:border-custom-dark-accent1 pl-4">
-                        <h4 class="font-semibold text-custom-light-heading dark:text-custom-dark-heading">Senior
+                    <!-- removed vertical border class -->
+                    <div class="pl-4">
+                        <h4 class="font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3">Senior
                             Software Engineer</h4>
                         <p class="text-custom-light-text dark:text-custom-dark-text">Oleander Financial Technology Ltd,
-                            Pune, India • April 2025 – Present</p>
-                        <ul class="list-disc ml-5 text-custom-light-text dark:text-custom-dark-text mt-2 space-y-1">
-                            <li>Built a trading platform for the Indian market.</li>
-                            <li>Participated in architecture and design for an Algo trading platform.</li>
-                            <li>Collaborated with stakeholders (portfolio managers, traders, investors).</li>
+                            Pune, India • April 2025 – August 2025</p>
+
+                        <!-- custom, more-visual bullets with accent marker and highlighted keywords -->
+                        <ul class="space-y-2 mt-2">
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>built a copy trading like platform for indian market using <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">python
+                                        django</span> and <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">htmx</span>.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>integrated APIs of top indian brokers covering over <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">70%
+                                        market share</span> into a unified platform.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>part of <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">design
+                                        and architecture</span> of an algo trading platform.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>collaborated directly with <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">portfolio
+                                        managers</span>, <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">sub-brokers</span>
+                                    and traders</span>
+                            </li>
                         </ul>
                     </div>
-                    <div class="border-l-4 border-custom-light-accent1 dark:border-custom-dark-accent1 pl-4">
-                        <h4 class="font-semibold text-custom-light-heading dark:text-custom-dark-heading">Software
-                            Development Engineer</h4>
+
+                    <!-- removed vertical border class -->
+                    <div class="pl-4">
+                        <h4 class="font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3">Software
+                            Engineer</h4>
                         <p class="text-custom-light-text dark:text-custom-dark-text">Mortgage Kart Ltd, Pune, India •
                             July 2021 – March 2025</p>
-                        <ul class="list-disc ml-5 text-custom-light-text dark:text-custom-dark-text mt-2 space-y-1">
-                            <li>Designed/built a Workflow CRM with Frappe and Python Django.</li>
-                            <li>Developed a Python web app with frameworks/tools: FastAPI, htmx, socket.io, redis.</li>
-                            <li>Transformed 5,000+ semi-structured records for analytics and Power BI visualization.
+
+                        <!-- improved bullets -->
+                        <ul class="space-y-2 mt-2">
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>designed and built a mortgage workflow and crm in <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">frappe</span>
+                                    and <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">python
+                                        django</span>.</span>
                             </li>
-                            <li>Managed live data migration from MongoDB to PostgreSQL using Mozilla Kinto, ensuring
-                                zero downtime.</li>
-                            <li>Improved product coverage (+25%) using Puppeteer/JavaScript for web automation; AWS
-                                Lambda for scalability.</li>
-                            <li>Enhanced and maintained in-house ETL, built tools for data ingestion/optimization.</li>
-                            <li>Contributed to recruitment (campus visits).</li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>integrated <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">Meta
+                                        Business WhatsApp</span> for real-time communication using <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">fastapi</span>
+                                    and <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">socket.io</span>.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>transformed <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">50,000+</span>
+                                    semi-structured
+                                    records for analytics and <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">Power
+                                        BI</span> visualization.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>prototyped live data migration from <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">MongoDB</span>
+                                    to <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">PostgreSQL</span>
+                                    using <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">Mozilla
+                                        Kinto</span> without any data loss and downtime.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>improved automation tool coverage by 25% using <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">puppeteer/javascript</span>
+                                    and <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">AWS
+                                        lambda</span> for scalability.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>owned and maintained in-house <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">ETL</span>, built tools for data ingestion/optimization using <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">python</span>
+                                    and <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">airflow</span></span>
+                            </li>
+                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
+                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                                <span>active contributor to <span
+                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">recruitment</span>
+                                    (campus visits).</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -52,7 +145,7 @@
 
             <!-- Skills -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-heading dark:text-custom-dark-heading mb-4">Skills
+                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">Skills
                 </h3>
                 <div class="flex flex-wrap gap-3">
                     <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Python Web Application</span>
@@ -65,7 +158,7 @@
 
             <!-- Languages -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-heading dark:text-custom-dark-heading mb-4">Languages
+                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">Languages
                 </h3>
                 <div class="flex flex-wrap gap-3">
                     <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Python</span>
@@ -77,7 +170,7 @@
 
             <!-- Frameworks & Tools -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-heading dark:text-custom-dark-heading mb-4">
+                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">
                     Frameworks & Tools</h3>
                 <div class="flex flex-wrap gap-3">
                     <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Django</span>
@@ -85,30 +178,42 @@
                     <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Socket.io</span>
                     <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Power BI</span>
                     <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Git</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Mozilla Kinto</span>
                     <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Frappe</span>
+                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">htmx</span>
                 </div>
             </div>
 
             <!-- Achievements -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-heading dark:text-custom-dark-heading mb-4">
+                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">
                     Achievements</h3>
-                <ul class="list-disc ml-5 text-custom-light-text dark:text-custom-dark-text space-y-1">
-                    <li>standout performer awarded at mortgage kart for designing and building a workflow crm.
+
+                <!-- improved bullets for achievements -->
+                <ul class="space-y-2 text-custom-light-text dark:text-custom-dark-text">
+                    <li class="flex items-start gap-3">
+                        <span
+                            class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                        <span>standout performer awarded at mortgage kart for designing and building a workflow
+                            crm.</span>
                     </li>
-                    <li>presented and published Detection and Monitoring of Alzheimer’s Disease Using Serious Games—A Study (2021) DOI: <a href="https://doi.org/10.1007/978-981-33-4355-9_6" class="text-custom-light-heading dark:text-custom-dark-heading"
-                            target="_blank">10.1007/978-981-33-4355-9_6</a><br>patent 202121009893 Journal Number: 11/2021, Journal Date: 12/03/2021 – Indian Patent Office
+                    <li class="flex items-start gap-3">
+                        <span
+                            class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                        <span>presented and published Detection and Monitoring of Alzheimer’s Disease Using Serious
+                            Games—A Study (2021) DOI: <a href="https://doi.org/10.1007/978-981-33-4355-9_6"
+                                class="text-custom-light-accent3 dark:text-custom-dark-accent3"
+                                target="_blank">10.1007/978-981-33-4355-9_6</a><br>patent 202121009893 Journal Number:
+                            11/2021, Journal Date: 12/03/2021 – Indian Patent Office</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Education -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-heading dark:text-custom-dark-heading mb-4">Education
+                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">Education
                 </h3>
-                <div class="border-l-4 border-custom-light-accent3 dark:border-custom-dark-accent3 pl-4">
-                    <h4 class="font-semibold text-custom-light-heading dark:text-custom-dark-heading">Bachelor's in
+                <div class="pl-4">
+                    <h4 class="font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3">Bachelor's in
                         Computer Science Engineering</h4>
                     <p class="text-custom-light-text dark:text-custom-dark-text">University of Pune, India • July 2017 –
                         July 2021</p>
