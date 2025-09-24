@@ -68,19 +68,19 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <div class="flex items-baseline space-x-8">
-                        <button hx-trigger="load, click" hx-get="/section/me" hx-target="#main-content"
-                            hx-indicator="#loading" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
+                        <button hx-trigger="load, click" hx-get="/me" hx-target="#main-content"
+                            hx-indicator="#loading" hx-push-url="/me" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             me
                         </button>
-                        <button hx-get="/section/scribblings" hx-target="#main-content" hx-indicator="#loading"
+                        <button hx-get="/scribblings" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/scribblings"
                             class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             scribblings
                         </button>
-                        <button hx-get="/section/mystery" hx-target="#main-content" hx-indicator="#loading"
+                        <button hx-get="/mindfield" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/mindfield"
                             class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             ???
                         </button>
-                        <button hx-get="/section/cv" hx-target="#main-content" hx-indicator="#loading" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
+                        <button hx-get="/cv" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/cv" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             cv
                         </button>
                     </div>
@@ -111,17 +111,17 @@
         <div id="mobile-menu"
             class="md:hidden hidden bg-surface-light dark:bg-surface-dark border-t border-primary-500/10 animate-slide-down">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <button hx-get="/section/me" hx-target="#main-content" hx-indicator="#loading" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
+                <button hx-get="/me" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/me" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     me
                 </button>
-                <button hx-get="/section/cv" hx-target="#main-content" hx-indicator="#loading" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
+                <button hx-get="/cv" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/cv" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     cv
                 </button>
-                <button hx-get="/section/scribblings" hx-target="#main-content" hx-indicator="#loading"
+                <button hx-get="/scribblings" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/scribblings"
                     class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     scribblings
                 </button>
-                <button hx-get="/section/mystery" hx-target="#main-content" hx-indicator="#loading"
+                <button hx-get="/mindfield" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/mindfield"
                     class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     ???
                 </button>

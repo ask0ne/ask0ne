@@ -171,5 +171,44 @@ class BlogDatabase:
         finally:
             conn.close()
 
+    @staticmethod
+    def get_post_by_slug(slug: str) -> Optional[BlogPost]:
+        """Fetch a blog post by its URL slug"""
+        conn = BlogDatabase._get_connection()
+        if not conn:
+            return None
+
+        try:
+            with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+                # Get all posts and filter by slug since we generate slugs dynamically
+                cur.execute("""
+                    SELECT id, created_at, data 
+                    FROM blog 
+                    ORDER BY created_at DESC
+                """)
+                rows = cur.fetchall()
+                
+                for row in rows:
+                    # Convert row to BlogPost object
+                    data_dict = row['data'] if isinstance(row['data'], dict) else json.loads(row['data'])
+                    blog_data = BlogPostData(**data_dict)
+                    
+                    post = BlogPost(
+                        id=row['id'],
+                        created_at=row['created_at'],
+                        data=blog_data
+                    )
+                    
+                    # Check if this post matches the slug
+                    if post.slug == slug:
+                        return post
+                
+                return None
+        except psycopg2.Error as e:
+            print(f"Error fetching post by slug {slug}: {e}")
+            return None
+        finally:
+            conn.close()
+
     # Note: Removed create_post, update_post, and delete_post methods 
     # as requested - only read operations are implemented

@@ -21,7 +21,7 @@
                         <time>{{ post.created_at.strftime('%B %d, %Y') if post.created_at else 'Date unknown' }}</time>
                     </div>
                     <div class="mb-3">
-                        <button hx-get="/blog/{{ post.id }}" hx-target="#main-content"
+                        <button hx-get="/scribblings/{{ post.slug }}" hx-target="#main-content" hx-push-url="/scribblings/{{ post.slug }}"
                             class="transition-all duration-200 text-left w-full hover:opacity-80 hover:translate-x-1">
                             <p class="text-primary-900 dark:text-surface-light text-base font-medium">{{ post.title }}</p>
                         </button>

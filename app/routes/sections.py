@@ -9,6 +9,38 @@ router = APIRouter()
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+# Individual routes for each section with clean URLs
+@router.get("/me", response_class=HTMLResponse)
+async def get_me_section(request: Request):
+    return templates.TemplateResponse("sections/me.html", {
+        "request": request, 
+        "section_id": "me"
+    })
+
+@router.get("/cv", response_class=HTMLResponse)
+async def get_cv_section(request: Request):
+    return templates.TemplateResponse("sections/cv.html", {
+        "request": request, 
+        "section_id": "cv"
+    })
+
+@router.get("/scribblings", response_class=HTMLResponse)
+async def get_scribblings_section(request: Request):
+    posts = BlogDatabase.get_all_posts()
+    return templates.TemplateResponse("sections/scribblings.html", {
+        "request": request, 
+        "section_id": "scribblings",
+        "posts": posts
+    })
+
+@router.get("/mindfield", response_class=HTMLResponse)
+async def get_mystery_section(request: Request):
+    return templates.TemplateResponse("sections/mystery.html", {
+        "request": request, 
+        "section_id": "mystery"
+    })
+
+# Keep the old endpoint for backwards compatibility
 @router.get("/section/{section_id}", response_class=HTMLResponse)
 async def get_section(request: Request, section_id: str):
     section_templates = {
