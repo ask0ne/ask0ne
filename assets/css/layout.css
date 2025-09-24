@@ -1,9 +1,5 @@
-/* Additional layout styles */
-.nav-wrapper {
-    max-width: 64rem;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
+/* Layout styles moved to Tailwind utilities in templates */
+/* All layout, flexbox, and grid styles now use Tailwind classes */
 
 .nav-content {
     display: flex;

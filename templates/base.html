@@ -5,35 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}@atharva_kawade{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.8"></script>
     <link rel="stylesheet" href="/assets/css/utilities.css">
-    <link rel="stylesheet" href="/assets/css/theme.css">
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        custom: {
-                            dark: {
-                                bg: '#272932',
-                                nav: '#0F7173',
-                                heading: '#D8A47F',
-                                text: '#E7ECEF',
-                                accent1: '#0F7173',
-                                accent2: '#D8A47F',
-                                accent3: '#91A9B4'
-                            },
-                            light: {
-                                bg: '#E7ECEF',
-                                nav: '#0F7173',
-                                heading: '#F05D5E',
-                                text: '#272932',
-                                accent1: '#0F7173',
-                                accent2: '#F05D5E',
-                                accent3: '#0F7173'
-                            }
+                        'primary': {
+                            50: '#f0f9ff',
+                            500: '#0F7173',
+                            600: '#0c5f61',
+                            700: '#094e50',
+                            900: '#272932'
+                        },
+                        'accent': {
+                            light: '#F05D5E',
+                            dark: '#D8A47F',
+                            muted: '#91A9B4'
+                        },
+                        'surface': {
+                            light: '#E7ECEF',
+                            dark: '#272932'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.2s ease-in-out',
+                        'slide-down': 'slideDown 0.2s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-10px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
                         }
                     }
                 }
@@ -43,28 +59,28 @@
 </head>
 
 <body
-    class="bg-custom-light-bg text-custom-light-text dark:bg-custom-dark-bg dark:text-custom-dark-text min-h-screen transition-colors duration-200">
+    class="bg-surface-light text-primary-900 dark:bg-surface-dark dark:text-surface-light min-h-screen transition-colors duration-200 font-sans">
     <!-- Mobile-first navigation -->
     <nav
-        class="sticky top-0 z-50 bg-white/80 dark:bg-custom-dark-bg/80 border-b border-custom-light-nav/10 dark:border-custom-dark-nav/10 backdrop-blur-sm">
+        class="sticky top-0 z-50 bg-surface-light/80 dark:bg-surface-dark/80 border-b border-primary-500/10 backdrop-blur-sm">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <div class="flex items-baseline space-x-8">
                         <button hx-trigger="load, click" hx-get="/section/me" hx-target="#main-content"
-                            hx-indicator="#loading" class="nav-link">
+                            hx-indicator="#loading" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             me
                         </button>
                         <button hx-get="/section/scribblings" hx-target="#main-content" hx-indicator="#loading"
-                            class="nav-link">
+                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             scribblings
                         </button>
                         <button hx-get="/section/mystery" hx-target="#main-content" hx-indicator="#loading"
-                            class="nav-link">
+                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             ???
                         </button>
-                        <button hx-get="/section/cv" hx-target="#main-content" hx-indicator="#loading" class="nav-link">
+                        <button hx-get="/section/cv" hx-target="#main-content" hx-indicator="#loading" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             cv
                         </button>
                     </div>
@@ -73,7 +89,7 @@
                 <!-- Logo/Brand -->
                 <div class="flex-shrink-0">
                     <button id="theme-toggle"
-                        class="text-xl font-bold text-gray-900 dark:text-white hover:opacity-80 transition-opacity">
+                        class="text-xl font-bold text-primary-900 dark:text-surface-light hover:opacity-80 transition-all duration-200 hover:scale-105">
                         (■_■¬)
                     </button>
                 </div>
@@ -81,7 +97,7 @@
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
                     <button id="mobile-menu-btn"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
+                        class="inline-flex items-center justify-center p-2 rounded-md text-primary-600 hover:text-primary-900 dark:text-accent-muted dark:hover:text-surface-light hover:bg-primary-50 dark:hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 transition-colors">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16" />
@@ -93,21 +109,21 @@
 
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu"
-            class="md:hidden hidden bg-white dark:bg-custom-dark-bg border-t border-custom-light-nav/10 dark:border-custom-dark-nav/10">
+            class="md:hidden hidden bg-surface-light dark:bg-surface-dark border-t border-primary-500/10 animate-slide-down">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <button hx-get="/section/me" hx-target="#main-content" hx-indicator="#loading" class="mobile-nav-link">
+                <button hx-get="/section/me" hx-target="#main-content" hx-indicator="#loading" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     me
                 </button>
-                <button hx-get="/section/cv" hx-target="#main-content" hx-indicator="#loading" class="mobile-nav-link">
+                <button hx-get="/section/cv" hx-target="#main-content" hx-indicator="#loading" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     cv
                 </button>
                 <button hx-get="/section/scribblings" hx-target="#main-content" hx-indicator="#loading"
-                    class="mobile-nav-link">
+                    class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     scribblings
                 </button>
                 <button hx-get="/section/mystery" hx-target="#main-content" hx-indicator="#loading"
-                    class="mobile-nav-link">
-                    ?
+                    class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
+                    ???
                 </button>
             </div>
         </div>
@@ -116,11 +132,11 @@
     <!-- Loading indicator -->
     <div id="loading" class="htmx-indicator fixed top-20 left-1/2 transform -translate-x-1/2 z-40">
         <div
-            class="bg-white/80 dark:bg-custom-dark-bg/80 rounded-lg shadow-lg backdrop-blur-sm px-4 py-2 flex items-center space-x-2">
+            class="bg-surface-light/90 dark:bg-surface-dark/90 rounded-lg shadow-lg backdrop-blur-md px-4 py-2 flex items-center space-x-2 border border-primary-500/20 animate-fade-in">
             <div
-                class="animate-spin rounded-full h-4 w-4 border-b-2 border-custom-light-nav dark:border-custom-dark-nav">
+                class="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-500">
             </div>
-            <span class="text-sm text-custom-light-text dark:text-custom-dark-text">Loading...</span>
+            <span class="text-sm text-primary-900 dark:text-surface-light">Loading...</span>
         </div>
     </div>
 
@@ -173,14 +189,16 @@
 
         // Active state management
         document.addEventListener('htmx:afterRequest', function (evt) {
-            // Remove active class from all nav links
+            // Remove active styles from all nav links
             document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
-                link.classList.remove('active');
+                link.classList.remove('text-primary-900', 'dark:text-surface-light');
+                link.classList.add('text-accent-light', 'dark:text-accent-dark');
             });
 
-            // Add active class to clicked link
+            // Add active styles to clicked link
             if (evt.detail.elt.classList.contains('nav-link') || evt.detail.elt.classList.contains('mobile-nav-link')) {
-                evt.detail.elt.classList.add('active');
+                evt.detail.elt.classList.remove('text-accent-light', 'dark:text-accent-dark');
+                evt.detail.elt.classList.add('text-primary-900', 'dark:text-surface-light');
             }
         });
     </script>

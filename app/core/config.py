@@ -17,6 +17,8 @@ def create_app() -> FastAPI:
     
     # Mount static files
     app.mount("/static", StaticFiles(directory="static"), name="static")
+    # Serve legacy assets (e.g., resume PDF) and any asset-linked resources
+    app.mount("/assets", StaticFiles(directory="assets"), name="assets")
     
     return app
 

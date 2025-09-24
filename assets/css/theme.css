@@ -1,15 +1,5 @@
-:root {
-    /* Light mode colors */
-    --light-bg: #E7ECEF;
-    --light-text: #272932;
-    --light-accent: #D8A47F;
-    --accent-colour2: #F05D5E;
-
-    /* Dark mode colors */
-    --dark-bg: #272932;
-    --dark-text: #E7ECEF;
-    --dark-accent: #D8A47F;
-}
+/* Theme configuration moved to Tailwind config in base.html */
+/* All color variables and theme switching handled by Tailwind's dark mode */
 
 /* Dark mode accent_colour2 override */
 .dark {

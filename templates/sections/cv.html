@@ -1,26 +1,36 @@
 <div class="max-w-4xl mx-auto">
-    <div class="bg-white/50 dark:bg-custom-dark-bg/50 rounded-lg shadow-sm p-6 sm:p-8">
+    <div
+        class="bg-surface-light/50 dark:bg-surface-dark/50 rounded-lg shadow-sm p-6 sm:p-8 border border-primary-500/10 backdrop-blur-sm">
         <!-- Name and Contact (centered) -->
         <div class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-custom-light-accent3 dark:text-custom-dark-accent3">Atharva
+            <h1 class="text-3xl sm:text-4xl font-bold text-accent-light dark:text-accent-dark">Atharva
                 Kawade</h1>
-            <div class="mt-2 text-custom-light-text dark:text-custom-dark-text space-y-1">
-                <div>+91 9673757926 &nbsp;|&nbsp;<a href="https://github.com/ask0ne"
-                        class="text-custom-light-accent3 dark:text-custom-dark-accent3"
-                        target="_blank">github.com/ask0ne</a>&nbsp;|&nbsp;<a href="mailto:atharva.kawade1999@gmail.com"
-                        class="text-custom-light-accent3 dark:text-custom-dark-accent3">atharva.kawade1999@gmail.com</a>&nbsp;|&nbsp;<a
-                        href="https://linkedin.com/in/atharvakawade/"
-                        class="text-custom-light-accent3 dark:text-custom-dark-accent3"
-                        target="_blank">linkedin.com/in/atharvakawade/</a></div>
+            <div class="mt-2 text-primary-900 dark:text-surface-light space-y-1">
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 text-sm">
+                    <span>+91 9673757926</span>
+                    <span class="hidden sm:inline">|</span>
+                    <a href="https://github.com/ask0ne"
+                        class="text-primary-500 hover:text-accent-light dark:hover:text-accent-dark transition-colors"
+                        target="_blank">github.com/ask0ne</a>
+                    <span class="hidden sm:inline">|</span>
+                    <a href="mailto:atharva.kawade1999@gmail.com"
+                        class="text-primary-500 hover:text-accent-light dark:hover:text-accent-dark transition-colors">atharva.kawade1999@gmail.com</a>
+                    <span class="hidden sm:inline">|</span>
+                    <a href="https://linkedin.com/in/atharvakawade/"
+                        class="text-primary-500 hover:text-accent-light dark:hover:text-accent-dark transition-colors"
+                        target="_blank">linkedin.com/in/atharvakawade/</a>
+                </div>
             </div>
 
             <!-- Download resume button -->
-            <div class="mt-4 flex justify-center">
+            <div class="mt-6 flex justify-center">
                 <a href="/assets/public/atharvakawade_resume.pdf" download
-                   class="inline-flex items-center gap-2 text-custom-light-accent3 dark:text-custom-dark-accent3 underline decoration-2 underline-offset-4 hover:underline-offset-8 hover:opacity-90 transition"
-                   aria-label="Download resume as PDF">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 10l5 5m0 0 5-5m-5 5V4"/>
+                    class="inline-flex items-center gap-2 text-accent-light dark:text-accent-dark bg-primary-50 dark:bg-primary-700 px-4 py-2 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-600 transition-all duration-200 border border-primary-500/20"
+                    aria-label="Download resume as PDF">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 10l5 5m0 0 5-5m-5 5V4" />
                     </svg>
                     <span>Download Resume (PDF)</span>
                 </a>
@@ -29,179 +39,200 @@
         <div class="space-y-8">
             <!-- Professional Experience -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">
+                <h3
+                    class="text-xl font-semibold text-accent-light dark:text-accent-dark mb-6 border-b border-primary-500/20 pb-2">
                     Experience</h3>
-                <div class="space-y-4">
-                    <!-- removed vertical border class -->
-                    <div class="pl-4">
-                        <h4 class="font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3">Senior
-                            Software Engineer</h4>
-                        <p class="text-custom-light-text dark:text-custom-dark-text">Oleander Financial Technology Ltd,
-                            Pune, India • April 2025 – August 2025</p>
+                <div class="space-y-6">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-accent-light dark:bg-accent-dark rounded-full"></div>
+                    <h4 class="font-semibold text-accent-light dark:text-accent-dark text-lg">Senior
+                        Software Engineer</h4>
+                    <p class="text-primary-900/80 dark:text-surface-light/80 text-sm mb-3">Oleander Financial Technology
+                        Ltd,
+                        Pune, India • April 2025 – August 2025</p>
 
-                        <!-- custom, more-visual bullets with accent marker and highlighted keywords -->
-                        <ul class="space-y-2 mt-2">
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>built a copy trading like platform for indian market using <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">python
-                                        django</span> and <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">htmx</span>.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>integrated APIs of top indian brokers covering over <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">70%
-                                        market share</span> into a unified platform.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>part of <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">design
-                                        and architecture</span> of an algo trading platform.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>collaborated directly with <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">portfolio
-                                        managers</span>, <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">sub-brokers</span>
-                                    and traders</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>built a copy trading like platform for indian market using <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">python
+                                    django</span> and <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">htmx</span>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>integrated APIs of top indian brokers covering over <span
+                                    class="text-accent-light dark:text-accent-dark font-medium">70%
+                                    market share</span> into a unified platform.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>part of <span class="text-accent-light dark:text-accent-dark font-medium">design
+                                    and architecture</span> of an algo trading platform.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>collaborated directly with <span
+                                    class="text-accent-light dark:text-accent-dark font-medium">portfolio
+                                    managers</span>, <span
+                                    class="text-accent-light dark:text-accent-dark font-medium">sub-brokers</span>
+                                and traders</span>
+                        </li>
+                    </ul>
 
-                    <!-- removed vertical border class -->
-                    <div class="pl-4">
-                        <h4 class="font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3">Software
-                            Engineer</h4>
-                        <p class="text-custom-light-text dark:text-custom-dark-text">Mortgage Kart Ltd, Pune, India •
-                            July 2021 – March 2025</p>
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-accent-light dark:bg-accent-dark rounded-full"></div>
+                    <h4 class="font-semibold text-accent-light dark:text-accent-dark text-lg">Software
+                        Engineer</h4>
+                    <p class="text-primary-900/80 dark:text-surface-light/80 text-sm mb-3">Mortgage Kart Ltd, Pune,
+                        India •
+                        July 2021 – March 2025</p>
 
-                        <!-- improved bullets -->
-                        <ul class="space-y-2 mt-2">
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>designed and built a mortgage workflow and crm in <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">frappe</span>
-                                    and <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">python
-                                        django</span>.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>integrated <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">Meta
-                                        Business WhatsApp</span> for real-time communication using <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">fastapi</span>
-                                    and <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">socket.io</span>.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>transformed <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">50,000+</span>
-                                    semi-structured
-                                    records for analytics and <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">Power
-                                        BI</span> visualization.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>prototyped live data migration from <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">MongoDB</span>
-                                    to <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">PostgreSQL</span>
-                                    using <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">Mozilla
-                                        Kinto</span> without any data loss and downtime.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>improved automation tool coverage by 25% using <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">puppeteer/javascript</span>
-                                    and <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">AWS
-                                        lambda</span> for scalability.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>owned and maintained in-house <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">ETL</span>, built tools for data ingestion/optimization using <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">python</span>
-                                    and <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">airflow</span></span>
-                            </li>
-                            <li class="flex items-start gap-3 text-custom-light-text dark:text-custom-dark-text">
-                                <span class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                                <span>active contributor to <span
-                                        class="text-custom-light-heading dark:text-custom-dark-heading font-medium">recruitment</span>
-                                    (campus visits).</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>designed and built a mortgage workflow and crm in <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">frappe</span>
+                                and <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">python
+                                    django</span>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>integrated <span class="text-accent-light dark:text-accent-dark font-medium">Meta
+                                    Business WhatsApp</span> for real-time communication using <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">fastapi</span>
+                                and <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">socket.io</span>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>transformed <span
+                                    class="text-accent-light dark:text-accent-dark font-medium">50,000+</span>
+                                semi-structured
+                                records for analytics and <span
+                                    class="text-accent-light dark:text-accent-dark font-medium">Power
+                                    BI</span> visualization.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>prototyped live data migration from <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">MongoDB</span>
+                                to <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">PostgreSQL</span>
+                                using <span class="text-accent-light dark:text-accent-dark font-medium">Mozilla
+                                    Kinto</span> without any data loss and downtime.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>improved automation tool coverage by 25% using <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">puppeteer/javascript</span>
+                                and <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">AWS
+                                    lambda</span> for scalability.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>owned and maintained in-house <span
+                                    class="text-accent-light dark:text-accent-dark font-medium">ETL</span>, built tools
+                                for data ingestion/optimization using <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">python</span>
+                                and <span
+                                    class="text-accent-light dark:text-accent-dark font-medium bg-primary-50 dark:bg-primary-700 px-2 py-1 rounded">airflow</span></span>
+                        </li>
+                        <li class="flex items-start gap-3 text-primary-900 dark:text-surface-light">
+                            <span class="mt-2 h-2 w-2 rounded-full bg-primary-500 flex-shrink-0"></span>
+                            <span>active contributor to <span
+                                    class="text-accent-light dark:text-accent-dark font-medium">recruitment</span>
+                                (campus visits).</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
             <!-- Skills -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">Skills
+                <h3
+                    class="text-xl font-semibold text-accent-light dark:text-accent-dark mb-6 border-b border-primary-500/20 pb-2">
+                    Skills
                 </h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Python Web Application</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">ETL (Extract, Transform,
+                    <span
+                        class="bg-primary-50 dark:bg-primary-700 px-4 py-2 rounded-full text-sm text-primary-700 dark:text-surface-light border border-primary-500/20">Python
+                        Web Application</span>
+                    <span
+                        class="bg-primary-50 dark:bg-primary-700 px-4 py-2 rounded-full text-sm text-primary-700 dark:text-surface-light border border-primary-500/20">ETL
+                        (Extract, Transform,
                         Load)</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Data Pipelining</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">REST API</span>
+                    <span
+                        class="bg-primary-50 dark:bg-primary-700 px-4 py-2 rounded-full text-sm text-primary-700 dark:text-surface-light border border-primary-500/20">Data
+                        Pipelining</span>
+                    <span
+                        class="bg-primary-50 dark:bg-primary-700 px-4 py-2 rounded-full text-sm text-primary-700 dark:text-surface-light border border-primary-500/20">REST
+                        API</span>
                 </div>
             </div>
 
             <!-- Languages -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">Languages
+                <h3
+                    class="text-xl font-semibold text-accent-light dark:text-accent-dark mb-6 border-b border-primary-500/20 pb-2">
+                    Languages
                 </h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Python</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">PostgreSQL</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">BASH</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">JavaScript</span>
+                    <span
+                        class="bg-accent-light/10 dark:bg-accent-dark/10 px-4 py-2 rounded-full text-sm text-accent-light dark:text-accent-dark border border-accent-light/30 dark:border-accent-dark/30 font-medium">Python</span>
+                    <span
+                        class="bg-accent-light/10 dark:bg-accent-dark/10 px-4 py-2 rounded-full text-sm text-accent-light dark:text-accent-dark border border-accent-light/30 dark:border-accent-dark/30 font-medium">PostgreSQL</span>
+                    <span
+                        class="bg-accent-light/10 dark:bg-accent-dark/10 px-4 py-2 rounded-full text-sm text-accent-light dark:text-accent-dark border border-accent-light/30 dark:border-accent-dark/30 font-medium">BASH</span>
+                    <span
+                        class="bg-accent-light/10 dark:bg-accent-dark/10 px-4 py-2 rounded-full text-sm text-accent-light dark:text-accent-dark border border-accent-light/30 dark:border-accent-dark/30 font-medium">JavaScript</span>
                 </div>
             </div>
 
             <!-- Frameworks & Tools -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">
+                <h3
+                    class="text-xl font-semibold text-accent-light dark:text-accent-dark mb-6 border-b border-primary-500/20 pb-2">
                     Frameworks & Tools</h3>
                 <div class="flex flex-wrap gap-3">
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Django</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">FastAPI</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Socket.io</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Power BI</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Git</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">Frappe</span>
-                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700">htmx</span>
+                    <span
+                        class="bg-accent-muted/10 px-4 py-2 rounded-full text-sm text-accent-muted border border-accent-muted/30 font-medium">Django</span>
+                    <span
+                        class="bg-accent-muted/10 px-4 py-2 rounded-full text-sm text-accent-muted border border-accent-muted/30 font-medium">FastAPI</span>
+                    <span
+                        class="bg-accent-muted/10 px-4 py-2 rounded-full text-sm text-accent-muted border border-accent-muted/30 font-medium">Socket.io</span>
+                    <span
+                        class="bg-accent-muted/10 px-4 py-2 rounded-full text-sm text-accent-muted border border-accent-muted/30 font-medium">Power
+                        BI</span>
+                    <span
+                        class="bg-accent-muted/10 px-4 py-2 rounded-full text-sm text-accent-muted border border-accent-muted/30 font-medium">Git</span>
+                    <span
+                        class="bg-accent-muted/10 px-4 py-2 rounded-full text-sm text-accent-muted border border-accent-muted/30 font-medium">Frappe</span>
+                    <span
+                        class="bg-accent-muted/10 px-4 py-2 rounded-full text-sm text-accent-muted border border-accent-muted/30 font-medium">htmx</span>
                 </div>
             </div>
 
             <!-- Achievements -->
+            <!-- Achievements -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">
+                <h3
+                    class="text-xl font-semibold text-accent-light dark:text-accent-dark mb-6 border-b border-primary-500/20 pb-2">
                     Achievements</h3>
 
-                <!-- improved bullets for achievements -->
-                <ul class="space-y-2 text-custom-light-text dark:text-custom-dark-text">
+                <ul class="space-y-4 text-primary-900 dark:text-surface-light">
                     <li class="flex items-start gap-3">
                         <span
-                            class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
+                            class="mt-2 h-2 w-2 rounded-full bg-accent-light dark:bg-accent-dark flex-shrink-0"></span>
                         <span>standout performer awarded at mortgage kart for designing and building a workflow
                             crm.</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <span
-                            class="mt-2 h-2 w-2 rounded-full bg-custom-light-accent3 dark:bg-custom-dark-accent3 flex-shrink-0"></span>
-                        <span>presented and published Detection and Monitoring of Alzheimer’s Disease Using Serious
+                            class="mt-2 h-2 w-2 rounded-full bg-accent-light dark:bg-accent-dark flex-shrink-0"></span>
+                        <span>presented and published Detection and Monitoring of Alzheimer's Disease Using Serious
                             Games—A Study (2021) DOI: <a href="https://doi.org/10.1007/978-981-33-4355-9_6"
-                                class="text-custom-light-accent3 dark:text-custom-dark-accent3"
+                                class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-opacity underline decoration-2 underline-offset-4 hover:underline-offset-8"
                                 target="_blank">10.1007/978-981-33-4355-9_6</a><br>patent 202121009893 Journal Number:
                             11/2021, Journal Date: 12/03/2021 – Indian Patent Office</span>
                     </li>
@@ -210,15 +241,17 @@
 
             <!-- Education -->
             <div>
-                <h3 class="text-xl font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3 mb-4">Education
+                <h3
+                    class="text-xl font-semibold text-accent-light dark:text-accent-dark mb-6 border-b border-primary-500/20 pb-2">
+                    Education
                 </h3>
-                <div class="pl-4">
-                    <h4 class="font-semibold text-custom-light-accent3 dark:text-custom-dark-accent3">Bachelor's in
-                        Computer Science Engineering</h4>
-                    <p class="text-custom-light-text dark:text-custom-dark-text">University of Pune, India • July 2017 –
-                        July 2021</p>
-                    <p class="text-custom-light-text dark:text-custom-dark-text mt-2">CGPA: 7.75/10</p>
-                </div>
+                <div class="absolute -left-2 top-0 w-4 h-4 bg-accent-light dark:bg-accent-dark rounded-full"></div>
+                <h4 class="font-semibold text-accent-light dark:text-accent-dark text-lg">Bachelor's in
+                    Computer Science Engineering</h4>
+                <p class="text-primary-900/80 dark:text-surface-light/80 text-sm">University of Pune, India • July
+                    2017 –
+                    July 2021</p>
+                <p class="text-primary-900 dark:text-surface-light mt-2 font-medium">CGPA: 7.75/10</p>
             </div>
         </div>
     </div>
