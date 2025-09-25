@@ -52,13 +52,13 @@ async def get_cv_section(request: Request):
 
 @router.get("/scribblings", response_class=HTMLResponse)
 async def get_scribblings_section(request: Request):
-    posts = BlogDatabase.get_all_posts()
+    posts = await BlogDatabase.get_all_posts()
     context = {
         "request": request, 
         "section_id": "scribblings",
         "posts": posts
     }
-    
+
     if is_htmx_request(request):
         # Return partial template for HTMX requests
         return templates.TemplateResponse("sections/scribblings.html", context)
@@ -100,7 +100,7 @@ async def get_section(request: Request, section_id: str):
     context = {"request": request, "section_id": section_id}
 
     if section_id == "scribblings":
-        context["posts"] = BlogDatabase.get_all_posts()
+        context["posts"] = await BlogDatabase.get_all_posts()
 
     if is_htmx_request(request):
         # Return partial template for HTMX requests

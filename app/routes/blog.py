@@ -14,11 +14,11 @@ def is_htmx_request(request: Request) -> bool:
 async def get_blog_list(request: Request, tag: Optional[str] = Query(None), search: Optional[str] = Query(None)):
     """Get all blog posts, optionally filtered by tag or search term"""
     if tag:
-        posts = BlogDatabase.get_posts_by_tag(tag)
+        posts = await BlogDatabase.get_posts_by_tag(tag)
     elif search:
-        posts = BlogDatabase.search_posts(search)
+        posts = await BlogDatabase.search_posts(search)
     else:
-        posts = BlogDatabase.get_all_posts()
+        posts = await BlogDatabase.get_all_posts()
     
     context = {
         "request": request, 
@@ -37,7 +37,7 @@ async def get_blog_list(request: Request, tag: Optional[str] = Query(None), sear
 @router.get("/scribblings/{slug}", response_class=HTMLResponse)
 async def get_blog_post_by_slug(request: Request, slug: str):
     """Get a specific blog post by slug under /scribblings/"""
-    post = BlogDatabase.get_post_by_slug(slug)
+    post = await BlogDatabase.get_post_by_slug(slug)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
 
@@ -58,7 +58,7 @@ async def get_blog_post_by_slug(request: Request, slug: str):
 @router.get("/blog/{post_id}", response_class=HTMLResponse)
 async def get_blog_post(request: Request, post_id: int):
     """Get a specific blog post by ID"""
-    post = BlogDatabase.get_post_by_id(post_id)
+    post = await BlogDatabase.get_post_by_id(post_id)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
 

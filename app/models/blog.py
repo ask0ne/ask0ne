@@ -1,35 +1,36 @@
-from pydantic import BaseModel, Field
-from typing import Optional, List, Dict, Any
-from datetime import datetime
+from tortoise.models import Model
+from tortoise import fields
+from tortoise.contrib.pydantic import pydantic_model_creator
+from typing import Optional, List
 import re
 
-class BlogPostData(BaseModel):
-    """JSONB data structure for blog posts"""
-    title: Optional[str] = Field(None, description="The title of the blog post")
-    text: str = Field(..., description="The blog post content")
-    tags: List[str] = Field(default_factory=list, description="List of tags for the blog post")
-
-class BlogPost(BaseModel):
-    """Main blog post model matching PostgreSQL schema"""
-    id: Optional[int] = None
-    created_at: Optional[datetime] = None
-    data: BlogPostData
-
+class BlogPost(Model):
+    """Tortoise ORM model for blog posts with JSONB data column"""
+    id = fields.IntField(pk=True)
+    created_at = fields.DatetimeField(auto_now_add=True)
+    
+    # Keep the existing JSONB structure
+    data = fields.JSONField()
+    
+    class Meta:
+        table = "blog"
+        ordering = ["-created_at"]
+    
     @property
     def title(self) -> Optional[str]:
-        """Convenience property to access the blog title"""
-        return self.data.title
-
+        """Get title from JSONB data"""
+        return self.data.get('title') if self.data else None
+    
     @property
     def text(self) -> str:
-        """Convenience property to access the blog text"""
-        return self.data.text
-
-    @property  
+        """Get text from JSONB data"""
+        return self.data.get('text', '') if self.data else ''
+    
+    @property
     def tags(self) -> List[str]:
-        """Convenience property to access the blog tags"""
-        return self.data.tags
-
+        """Get tags from JSONB data"""
+        return self.data.get('tags', []) if self.data else []
+    
     @property
     def slug(self) -> str:
         """Generate URL-friendly slug from title"""
@@ -43,21 +44,40 @@ class BlogPost(BaseModel):
         slug = slug.strip('-')                # Remove leading/trailing hyphens
         
         return slug if slug else f"post-{self.id}" if self.id else "untitled-post"
+    
+    @classmethod
+    async def get_by_slug(cls, slug: str) -> Optional['BlogPost']:
+        """Get a blog post by its slug"""
+        # Since slug is generated from title, we need to find posts and check slugs
+        posts = await cls.all()
+        for post in posts:
+            if post.slug == slug:
+                return post
+        return None
+    
+    @classmethod
+    async def search_posts(cls, search_term: str) -> List['BlogPost']:
+        """Search blog posts by title and text content in JSONB data"""
+        # Get all posts and filter in Python since JSONB text search is complex
+        posts = await cls.all()
+        search_lower = search_term.lower()
+        
+        matching_posts = []
+        for post in posts:
+            title = post.title or ""
+            text = post.text or ""
+            if search_lower in title.lower() or search_lower in text.lower():
+                matching_posts.append(post)
+        
+        return matching_posts
+    
+    @classmethod
+    async def get_posts_by_tag(cls, tag: str) -> List['BlogPost']:
+        """Get posts that contain a specific tag in JSONB data"""
+        posts = await cls.all()
+        # Filter posts that have the tag in their data.tags array
+        return [post for post in posts if tag in post.tags]
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "data": {
-                    "text": "This is a sample blog post content with some meaningful text.",
-                    "tags": ["fastapi", "python", "web-development"]
-                }
-            }
-        }
-
-class BlogPostCreate(BaseModel):
-    """Model for creating new blog posts"""
-    data: BlogPostData
-
-class BlogPostUpdate(BaseModel):
-    """Model for updating existing blog posts"""
-    data: Optional[BlogPostData] = None
+# Create Pydantic models from Tortoise model for API responses
+BlogPostPydantic = pydantic_model_creator(BlogPost, name="BlogPost")
+BlogPostInPydantic = pydantic_model_creator(BlogPost, name="BlogPostIn", exclude_readonly=True)
