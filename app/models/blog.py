@@ -77,7 +77,3 @@ class BlogPost(Model):
         posts = await cls.all()
         # Filter posts that have the tag in their data.tags array
         return [post for post in posts if tag in post.tags]
-
-# Create Pydantic models from Tortoise model for API responses
-BlogPostPydantic = pydantic_model_creator(BlogPost, name="BlogPost")
-BlogPostInPydantic = pydantic_model_creator(BlogPost, name="BlogPostIn", exclude_readonly=True)

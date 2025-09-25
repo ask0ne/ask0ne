@@ -82,30 +82,3 @@ async def get_mystery_section(request: Request):
             "section_id": "mystery",
             "content_template": "sections/mystery.html"
         })
-
-# Keep the old endpoint for backwards compatibility
-@router.get("/section/{section_id}", response_class=HTMLResponse)
-async def get_section(request: Request, section_id: str):
-    section_templates = {
-        "me": "sections/me.html",
-        "cv": "sections/cv.html",
-        "scribblings": "sections/scribblings.html",
-        "mystery": "sections/mystery.html"
-    }
-
-    template = section_templates.get(section_id)
-    if not template:
-        raise HTTPException(status_code=404, detail="Section not found")
-
-    context = {"request": request, "section_id": section_id}
-
-    if section_id == "scribblings":
-        context["posts"] = await BlogDatabase.get_all_posts()
-
-    if is_htmx_request(request):
-        # Return partial template for HTMX requests
-        return templates.TemplateResponse(template, context)
-    else:
-        # Return full page for direct access
-        context["content_template"] = template
-        return templates.TemplateResponse("base.html", context)
