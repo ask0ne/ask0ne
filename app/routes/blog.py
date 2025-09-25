@@ -6,6 +6,10 @@ from app.db.blog import BlogDatabase
 
 router = APIRouter()
 
+def is_htmx_request(request: Request) -> bool:
+    """Check if request is coming from HTMX"""
+    return request.headers.get("hx-request") is not None
+
 @router.get("/blog", response_class=HTMLResponse)
 async def get_blog_list(request: Request, tag: Optional[str] = Query(None), search: Optional[str] = Query(None)):
     """Get all blog posts, optionally filtered by tag or search term"""
@@ -16,10 +20,18 @@ async def get_blog_list(request: Request, tag: Optional[str] = Query(None), sear
     else:
         posts = BlogDatabase.get_all_posts()
     
-    return templates.TemplateResponse("list.html", {
+    context = {
         "request": request, 
         "posts": posts
-    })
+    }
+    
+    if is_htmx_request(request):
+        # Return partial template for HTMX requests
+        return templates.TemplateResponse("list.html", context)
+    else:
+        # Return full page for direct access
+        context["content_template"] = "list.html"
+        return templates.TemplateResponse("base.html", context)
 
 # New route for blog posts with clean URLs under /scribblings/
 @router.get("/scribblings/{slug}", response_class=HTMLResponse)
@@ -29,10 +41,18 @@ async def get_blog_post_by_slug(request: Request, slug: str):
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
 
-    return templates.TemplateResponse("detail.html", {
+    context = {
         "request": request,
         "post": post
-    })
+    }
+    
+    if is_htmx_request(request):
+        # Return partial template for HTMX requests
+        return templates.TemplateResponse("detail.html", context)
+    else:
+        # Return full page for direct access
+        context["content_template"] = "detail.html"
+        return templates.TemplateResponse("base.html", context)
 
 # Keep old route for backwards compatibility
 @router.get("/blog/{post_id}", response_class=HTMLResponse)
@@ -42,7 +62,15 @@ async def get_blog_post(request: Request, post_id: int):
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
 
-    return templates.TemplateResponse("detail.html", {
+    context = {
         "request": request,
         "post": post
-    })
+    }
+    
+    if is_htmx_request(request):
+        # Return partial template for HTMX requests
+        return templates.TemplateResponse("detail.html", context)
+    else:
+        # Return full page for direct access
+        context["content_template"] = "detail.html"
+        return templates.TemplateResponse("base.html", context)

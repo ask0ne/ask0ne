@@ -68,7 +68,7 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <div class="flex items-baseline space-x-8">
-                        <button hx-trigger="load, click" hx-get="/me" hx-target="#main-content"
+                        <button hx-get="/me" hx-target="#main-content"
                             hx-indicator="#loading" hx-push-url="/me" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             me
                         </button>
@@ -143,6 +143,9 @@
     <!-- Main content -->
     <main id="main-content" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {% block content %}
+        {% if content_template %}
+            {% include content_template %}
+        {% endif %}
         {% endblock %}
     </main>
 
