@@ -72,13 +72,17 @@
                             hx-indicator="#loading" hx-push-url="/me" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             me
                         </button>
-                        <button hx-get="/scribblings" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/scribblings"
+                        <button hx-get="/work" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/work"
                             class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
-                            scribblings
+                            work
                         </button>
-                        <button hx-get="/mindfield" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/mindfield"
+                        <button hx-get="/thoughts" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/thoughts"
                             class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
-                            ???
+                            thoughts
+                        </button>
+                        <button hx-get="/tangents" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/tangents"
+                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
+                            tangents
                         </button>
                         <button hx-get="/cv" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/cv" class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
                             cv
@@ -114,16 +118,19 @@
                 <button hx-get="/me" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/me" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     me
                 </button>
+                <button hx-get="/work" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/work" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
+                    work
+                </button>
                 <button hx-get="/cv" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/cv" class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
                     cv
                 </button>
-                <button hx-get="/scribblings" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/scribblings"
+                <button hx-get="/thoughts" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/thoughts"
                     class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
-                    scribblings
+                    thoughts
                 </button>
-                <button hx-get="/mindfield" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/mindfield"
+                <button hx-get="/tangents" hx-target="#main-content" hx-indicator="#loading" hx-push-url="/tangents"
                     class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors p-2 rounded-md block w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
-                    ???
+                    tangents
                 </button>
             </div>
         </div>
@@ -148,6 +155,15 @@
         {% endif %}
         {% endblock %}
     </main>
+<!-- 
+    <footer class="mt-16 py-8 border-t border-primary-500/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-xs text-primary-900/70 dark:text-surface-light/70">
+                built using <span class="text-accent-light dark:text-accent-dark font-medium">fastapi</span>, <span class="text-accent-light dark:text-accent-dark font-medium">htmx</span> and <span class="text-accent-light dark:text-accent-dark font-medium">tailwindcss</span>
+            </p>
+        </div>
+    </footer> 
+-->
 
     <script>
         // Theme management

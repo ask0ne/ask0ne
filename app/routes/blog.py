@@ -10,9 +10,9 @@ def is_htmx_request(request: Request) -> bool:
     """Check if request is coming from HTMX"""
     return request.headers.get("hx-request") is not None
 
-@router.get("/scribblings/{slug}", response_class=HTMLResponse)
+@router.get("/thoughts/{slug}", response_class=HTMLResponse)
 async def get_blog_post_by_slug(request: Request, slug: str):
-    """Get a specific blog post by slug under /scribblings/"""
+    """Get a specific blog post by slug under /thoughts/"""
     post = await BlogDatabase.get_post_by_slug(slug)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
@@ -29,3 +29,10 @@ async def get_blog_post_by_slug(request: Request, slug: str):
         # Return full page for direct access
         context["content_template"] = "detail.html"
         return templates.TemplateResponse("base.html", context)
+
+# Backwards compatibility route
+@router.get("/scribblings/{slug}", response_class=HTMLResponse)
+async def redirect_scribblings_post_to_thoughts(request: Request, slug: str):
+    """Redirect old scribblings/{slug} URL to thoughts/{slug}"""
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url=f"/thoughts/{slug}", status_code=301)

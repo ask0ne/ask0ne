@@ -34,6 +34,22 @@ async def get_me_section(request: Request):
             "content_template": "sections/me.html"
         })
 
+@router.get("/work", response_class=HTMLResponse)
+async def get_work_section(request: Request):
+    if is_htmx_request(request):
+        # Return partial template for HTMX requests
+        return templates.TemplateResponse("sections/work.html", {
+            "request": request, 
+            "section_id": "work"
+        })
+    else:
+        # Return full page for direct access
+        return templates.TemplateResponse("base.html", {
+            "request": request,
+            "section_id": "work",
+            "content_template": "sections/work.html"
+        })
+
 @router.get("/cv", response_class=HTMLResponse)
 async def get_cv_section(request: Request):
     if is_htmx_request(request):
@@ -50,12 +66,12 @@ async def get_cv_section(request: Request):
             "content_template": "sections/cv.html"
         })
 
-@router.get("/scribblings", response_class=HTMLResponse)
-async def get_scribblings_section(request: Request):
+@router.get("/thoughts", response_class=HTMLResponse)
+async def get_thoughts_section(request: Request):
     posts = await BlogDatabase.get_all_posts()
     context = {
         "request": request, 
-        "section_id": "scribblings",
+        "section_id": "thoughts",
         "posts": posts
     }
 
@@ -67,18 +83,31 @@ async def get_scribblings_section(request: Request):
         context["content_template"] = "sections/scribblings.html"
         return templates.TemplateResponse("base.html", context)
 
-@router.get("/mindfield", response_class=HTMLResponse)
-async def get_mystery_section(request: Request):
+@router.get("/tangents", response_class=HTMLResponse)
+async def get_tangents_section(request: Request):
     if is_htmx_request(request):
         # Return partial template for HTMX requests
         return templates.TemplateResponse("sections/mystery.html", {
             "request": request, 
-            "section_id": "mystery"
+            "section_id": "tangents"
         })
     else:
         # Return full page for direct access
         return templates.TemplateResponse("base.html", {
             "request": request,
-            "section_id": "mystery",
+            "section_id": "tangents",
             "content_template": "sections/mystery.html"
         })
+
+# Backwards compatibility routes
+@router.get("/scribblings", response_class=HTMLResponse)
+async def redirect_scribblings_to_thoughts(request: Request):
+    """Redirect old scribblings URL to thoughts"""
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/thoughts", status_code=301)
+
+@router.get("/mindfield", response_class=HTMLResponse)
+async def redirect_mindfield_to_tangents(request: Request):
+    """Redirect old mindfield URL to tangents"""
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/tangents", status_code=301)
