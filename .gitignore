@@ -5,3 +5,4 @@ __pycache__/
 .vscode/
 *.log
 template.json
+markdown_syntax.md
