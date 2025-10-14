@@ -130,7 +130,12 @@ def markdown_filter(text):
     """Convert markdown text to HTML"""
     if not text:
         return ""
-    return markdown.markdown(text, extensions=['extra', 'codehilite'])
+    
+    # Convert HTML br tags to markdown line breaks
+    text = text.replace('<br><br>', '\n\n')
+    text = text.replace('<br>', '\n')
+    
+    return markdown.markdown(text, extensions=['extra', 'codehilite', 'nl2br'])
 
 templates.env.filters['markdown'] = markdown_filter
 
