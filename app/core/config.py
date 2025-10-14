@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
+import markdown
 
 # Load environment variables
 load_dotenv()
@@ -123,6 +124,15 @@ cache_manager = CacheManager()
 
 # Templates configuration
 templates = Jinja2Templates(directory="templates")
+
+# Add markdown filter to Jinja2 environment
+def markdown_filter(text):
+    """Convert markdown text to HTML"""
+    if not text:
+        return ""
+    return markdown.markdown(text, extensions=['extra', 'codehilite'])
+
+templates.env.filters['markdown'] = markdown_filter
 
 def cache_key(*args, **kwargs) -> str:
     """Generate cache key from arguments"""

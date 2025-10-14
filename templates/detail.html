@@ -22,7 +22,7 @@
     </div>
     {% endif %}
 
-    <div class="whitespace-pre-wrap mb-6 leading-relaxed text-lg">{{ post.text }}</div>
+    <div class="prose prose-lg dark:prose-invert mb-6 leading-relaxed text-md max-w-none">{{ post.text | markdown | safe }}</div>
 
     {% if post.tags %}
     <footer>
