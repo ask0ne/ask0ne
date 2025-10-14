@@ -131,11 +131,12 @@ def markdown_filter(text):
     if not text:
         return ""
     
-    # Convert HTML br tags to markdown line breaks
+    # Convert HTML br tags to markdown line breaks (fallback)
     text = text.replace('<br><br>', '\n\n')
     text = text.replace('<br>', '\n')
     
-    return markdown.markdown(text, extensions=['extra', 'codehilite', 'nl2br'])
+    # Use markdown - it should automatically create proper <p> tags for paragraphs
+    return markdown.markdown(text, extensions=['extra', 'codehilite'])
 
 templates.env.filters['markdown'] = markdown_filter
 

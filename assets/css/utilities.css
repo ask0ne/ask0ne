@@ -8,3 +8,76 @@
 .htmx-request.htmx-indicator { 
     opacity: 1; 
 }
+
+/* Prose/Markdown Styling */
+.prose p {
+    margin-bottom: 1.25em;
+}
+
+.prose p:last-child {
+    margin-bottom: 0;
+}
+
+.prose blockquote {
+    border-left: 4px solid #e5e7eb;
+    padding-left: 1em;
+    margin: 1.5em 0;
+    font-style: italic;
+    color: #6b7280;
+}
+
+.dark .prose blockquote {
+    border-left-color: #4b5563;
+    color: #9ca3af;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.prose h1:first-child, .prose h2:first-child, .prose h3:first-child {
+    margin-top: 0;
+}
+
+.prose ul, .prose ol {
+    margin: 1.25em 0;
+    padding-left: 1.5em;
+}
+
+.prose li {
+    margin: 0.25em 0;
+}
+
+.prose code {
+    background-color: #f3f4f6;
+    padding: 0.125em 0.25em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+}
+
+.dark .prose code {
+    background-color: #374151;
+}
+
+.prose pre {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1em;
+    margin: 1.5em 0;
+    overflow-x: auto;
+}
+
+.dark .prose pre {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+.prose img {
+    max-width: 100%;
+    height: auto;
+    margin: 1.5em 0;
+    border-radius: 0.5rem;
+}
