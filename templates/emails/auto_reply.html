@@ -1,0 +1,63 @@
+<html>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="color: #2563eb; margin-bottom: 10px;">The Whelmed Engineers</h1>
+                <p style="color: #64748b; font-size: 18px;">AI, automation, and web expertise at 1/10th the usual cost</p>
+            </div>
+            
+            <div style="background-color: #f8fafc; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                <h2 style="color: #1e293b; margin-top: 0;">Thank you for reaching out!</h2>
+                <p>Hi there,</p>
+                <p>We've received your inquiry and are excited to learn more about your project. Here's what happens next:</p>
+                
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; align-items: center; margin: 10px 0;">
+                        <span style="color: #10b981; font-size: 20px; margin-right: 10px;">✓</span>
+                        <span>We'll review your message within the next few hours</span>
+                    </div>
+                    <div style="display: flex; align-items: center; margin: 10px 0;">
+                        <span style="color: #10b981; font-size: 20px; margin-right: 10px;">✓</span>
+                        <span>Expect a personal response within 24 hours</span>
+                    </div>
+                    <div style="display: flex; align-items: center; margin: 10px 0;">
+                        <span style="color: #10b981; font-size: 20px; margin-right: 10px;">✓</span>
+                        <span>We'll discuss how our AI solutions can help your business</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background-color: #ecfdf5; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+                <h3 style="color: #065f46; margin-top: 0;">Your Message Summary</h3>
+                <p><strong>Email:</strong> {{ email }}</p>
+                {% if phone %}
+                <p><strong>Phone:</strong> {{ phone }}</p>
+                {% endif %}
+                <p><strong>Message:</strong></p>
+                <p style="font-style: italic; background-color: white; padding: 10px; border-radius: 5px;">
+                    "{{ message_preview }}"
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <p style="color: #64748b;">In the meantime, feel free to explore our services:</p>
+                <div style="margin: 20px 0;">
+                    <a href="https://atharva-kawade.com/whelmed" 
+                       style="display: inline-block; background-color: #2563eb; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; margin: 5px; font-weight: bold;">
+                        View Our Services
+                    </a>
+                </div>
+            </div>
+            
+            <hr style="margin: 30px 0; border: none; border-top: 1px solid #e2e8f0;">
+            
+            <div style="text-align: center; color: #64748b; font-size: 14px;">
+                <p><strong>The Whelmed Engineers</strong></p>
+                <p>Transforming businesses with intelligent automation</p>
+                <p>
+                    <a href="mailto:atharva@whelmedthinker.com" style="color: #2563eb;">atharva@whelmedthinker.com</a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

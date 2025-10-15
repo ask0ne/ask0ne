@@ -1,7 +1,9 @@
 from fastapi import APIRouter, Request, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from app.core.config import templates
 from app.db.blog import BlogDatabase
+from app.models.contact import ContactForm
+from app.services.email import send_contact_email, send_auto_reply_email
 
 router = APIRouter()
 
@@ -66,6 +68,23 @@ async def get_cv_section(request: Request):
             "content_template": "sections/cv.html"
         })
 
+@router.get("/whelmed", response_class=HTMLResponse)
+async def get_whelmed_section(request: Request):
+    """The Whelmed Engineers - AI & Automation Services"""
+    if is_htmx_request(request):
+        # Return partial template for HTMX requests
+        return templates.TemplateResponse("sections/whelmed.html", {
+            "request": request, 
+            "section_id": "whelmed"
+        })
+    else:
+        # Return full page for direct access
+        return templates.TemplateResponse("base.html", {
+            "request": request,
+            "section_id": "whelmed",
+            "content_template": "sections/whelmed.html"
+        })
+
 @router.get("/thoughts", response_class=HTMLResponse)
 async def get_thoughts_section(request: Request):
     posts = await BlogDatabase.get_all_posts()
@@ -111,3 +130,42 @@ async def redirect_mindfield_to_tangents(request: Request):
     """Redirect old mindfield URL to tangents"""
     from fastapi.responses import RedirectResponse
     return RedirectResponse(url="/tangents", status_code=301)
+
+@router.post("/contact")
+async def submit_contact_form(form_data: ContactForm):
+    """
+    Handle contact form submission and send emails
+    """
+    try:
+        # Send notification email to the business
+        email_sent = await send_contact_email(form_data)
+        
+        # Send auto-reply to the customer
+        auto_reply_sent = await send_auto_reply_email(form_data)
+        
+        if email_sent:
+            return JSONResponse(
+                status_code=200,
+                content={
+                    "success": True,
+                    "message": "Thank you for your message! We'll get back to you within 24 hours.",
+                    "auto_reply_sent": auto_reply_sent
+                }
+            )
+        else:
+            return JSONResponse(
+                status_code=500,
+                content={
+                    "success": False,
+                    "message": "Sorry, there was an error sending your message. Please try again or contact us directly."
+                }
+            )
+            
+    except Exception as e:
+        return JSONResponse(
+            status_code=500,
+            content={
+                "success": False,
+                "message": "Sorry, there was an error processing your request. Please try again later."
+            }
+        )

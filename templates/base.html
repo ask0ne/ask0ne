@@ -4,13 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}@atharva_kawade{% endblock %}</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>{% block title %}Atharva Kawade - Software Developer & AI Engineer{% endblock %}</title>
+    <meta name="description" content="{% block description %}Atharva Kawade is a software developer and AI engineer specializing in web development, automation, and artificial intelligence solutions. Explore my work, thoughts, and projects.{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}Atharva Kawade, software developer, AI engineer, web development, automation, artificial intelligence, FastAPI, Python, JavaScript, machine learning{% endblock %}">
+    <meta name="author" content="Atharva Kawade">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{% block canonical %}https://atharva-kawade.com{% endblock %}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://atharva-kawade.com{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Atharva Kawade - Software Developer & AI Engineer{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Software developer and AI engineer specializing in web development, automation, and artificial intelligence solutions.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}https://atharva-kawade.com/assets/images/og-image.jpg{% endblock %}">
+    <meta property="og:site_name" content="Atharva Kawade">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{% block twitter_url %}https://atharva-kawade.com{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}Atharva Kawade - Software Developer & AI Engineer{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Software developer and AI engineer specializing in web development, automation, and artificial intelligence solutions.{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}https://atharva-kawade.com/assets/images/twitter-card.jpg{% endblock %}">
+    <meta property="twitter:creator" content="@atharva_kawade">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Performance & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+    <script src="/static/js/contact-utils.js"></script>
     <link rel="stylesheet" href="/assets/css/utilities.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Atharva Kawade",
+        "jobTitle": "Software Developer & AI Engineer",
+        "description": "Software developer and AI engineer specializing in web development, automation, and artificial intelligence solutions",
+        "url": "https://atharva-kawade.com",
+        "sameAs": [
+            "https://github.com/atharva-kawade",
+            "https://linkedin.com/in/atharva-kawade",
+            "https://twitter.com/atharva_kawade"
+        ],
+        "knowsAbout": [
+            "Software Development",
+            "Artificial Intelligence",
+            "Web Development",
+            "Automation",
+            "Machine Learning",
+            "Python",
+            "JavaScript",
+            "FastAPI"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Freelance"
+        }
+    }
+    </script>
     
     <script>
         tailwind.config = {
