@@ -4,5 +4,5 @@ aerich==0.7.2
 python-dotenv==1.0.0
 markdown==3.9
 fastapi-mail
-pydantic[email]==2.5.3
-jinja2
+pydantic
+Jinja2
