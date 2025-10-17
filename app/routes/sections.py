@@ -85,6 +85,23 @@ async def get_whelmed_section(request: Request):
             "content_template": "sections/whelmed.html"
         })
 
+@router.get("/cases", response_class=HTMLResponse)
+async def get_cases_section(request: Request):
+    """Case Studies - AI & Automation Success Stories"""
+    if is_htmx_request(request):
+        # Return partial template for HTMX requests
+        return templates.TemplateResponse("sections/cases.html", {
+            "request": request, 
+            "section_id": "cases"
+        })
+    else:
+        # Return full page for direct access
+        return templates.TemplateResponse("base.html", {
+            "request": request,
+            "section_id": "cases",
+            "content_template": "sections/cases.html"
+        })
+
 @router.get("/thoughts", response_class=HTMLResponse)
 async def get_thoughts_section(request: Request):
     posts = await BlogDatabase.get_all_posts()

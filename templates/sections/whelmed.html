@@ -1,5 +1,37 @@
-<!-- The Whelmed Engineers Landing Section -->
-<div class="space-y-16">
+<!-- Custom Landing Page for The Whelmed Engineers -->
+<div class="min-h-screen bg-gradient-to-br from-primary-50 to-accent-light/5 dark:from-primary-900 dark:to-surface-dark">
+    <!-- Custom Navigation Bar -->
+    <nav class="relative z-50 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo/Brand -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-primary-900 dark:text-surface-light">
+                        The Whelmed Engineers
+                    </h1>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="/whelmed" class="text-accent-light font-semibold">
+                        Home
+                    </a>
+                    <a href="/cases" class="text-primary-700 dark:text-surface-light hover:text-accent-light transition-colors">
+                        Case Studies
+                    </a>
+                </div>
+
+                <!-- Theme Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle"
+                        class="text-xl font-bold text-primary-900 dark:text-surface-light hover:opacity-80 transition-all duration-200 hover:scale-105">
+                        (■_■¬)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <!-- Structured Data for Services -->
     <script type="application/ld+json">
     {
@@ -18,476 +50,412 @@
             "AI Automations",
             "Web Application Development"
         ],
-        "areaServed": "Worldwide",
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "AI & Automation Services",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Agentic AI Systems",
-                        "description": "Deploy autonomous, multi-agent intelligence to master complex business workflows"
-                    }
-                },
-                {
-                    "@type": "Offer", 
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "AI Chatbots",
-                        "description": "Chatbots that truly understand your business, connect with your data, and drive genuine automation"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service", 
-                        "name": "AI Automations",
-                        "description": "Robust, scalable automation for all your core processes—from operations and finance to customer engagement"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Web Applications",
-                        "description": "Rapid, scalable web solutions built with proven technology and smart AI features"
-                    }
-                }
-            ]
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "atharva@whelmedthinker.com",
-            "contactType": "customer service"
-        }
+        "areaServed": "Worldwide"
     }
     </script>
     <!-- Hero Section -->
-    <header class="text-center" role="banner">
-        <h1 class="text-4xl md:text-6xl font-bold text-primary-900 dark:text-surface-light mb-6 animate-fade-in">
-            The Whelmed Engineers
-        </h1>
-        <p class="text-xl md:text-2xl text-primary-700 dark:text-surface-light/80 mb-8 max-w-4xl mx-auto">
-            AI, automation, and web expertise at <strong class="text-accent-light font-semibold">1/10th the usual cost</strong>—no disruption, just powerful results.
-        </p>
-        <div class="flex justify-center">
-            <a href="#contact" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105" 
-               aria-label="Contact The Whelmed Engineers for AI and automation services">
-                Get In Touch
-            </a>
+    <section class="relative overflow-hidden py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-5xl md:text-7xl font-bold text-primary-900 dark:text-surface-light mb-8 animate-fade-in">
+                    AI That Actually Works
+                </h2>
+                <p class="text-xl md:text-2xl text-primary-700 dark:text-surface-light/80 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    We deliver intelligent automations, document intelligence, and knowledge bots at 
+                    <span class="text-accent-light font-bold">1/10th the usual cost</span>—seamlessly 
+                    embedding into your stack without disrupting your workflow.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#contact" class="bg-accent-light hover:bg-accent-light/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                        Start Your Project
+                    </a>
+                    <a href="/cases" class="bg-transparent border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                        View Case Studies
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-accent-light/10 rounded-full animate-bounce"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-primary-500/10 rounded-full animate-pulse"></div>
+    </section>
 
-    <!-- Why We're Different -->
-    <section class="bg-white dark:bg-primary-900/30 rounded-xl p-8 mx-auto max-w-6xl">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary-900 dark:text-surface-light mb-6">
-                Why We're Different
-            </h2>
-            <div class="max-w-4xl mx-auto space-y-4 text-lg text-primary-700 dark:text-surface-light/80">
-                <p>
-                    Most organizations in 2025 are stuck with expensive, generic AI wrappers and drawn-out integrations.
+    <!-- Value Proposition -->
+    <section class="py-20 bg-white/50 dark:bg-primary-900/30 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-primary-900 dark:text-surface-light mb-6">
+                    Why Whelmed?
+                </h3>
+                <p class="text-lg text-primary-700 dark:text-surface-light/80 max-w-3xl mx-auto">
+                    Most organizations are stuck with expensive, generic AI wrappers. We're different.
                 </p>
-                <p>
-                    The Whelmed Engineers deliver intelligent automations, document intelligence, and knowledge bots—seamlessly embedding into your stack and workflow while empowering your existing tech teams.
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-accent-light to-accent-light/70 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-primary-900 dark:text-surface-light mb-4">10x Faster</h4>
+                    <p class="text-primary-700 dark:text-surface-light/80">Deploy intelligent solutions in days, not months. No lengthy consultations or drawn-out integrations.</p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-primary-900 dark:text-surface-light mb-4">1/10th Cost</h4>
+                    <p class="text-primary-700 dark:text-surface-light/80">Get enterprise-grade AI solutions without the enterprise price tag. Built smart, delivered efficiently.</p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="w-20 h-20 bg-gradient-to-br from-accent-muted to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-primary-900 dark:text-surface-light mb-4">Zero Disruption</h4>
+                    <p class="text-primary-700 dark:text-surface-light/80">Seamlessly integrate with your existing tech stack. Empower your team, don't replace them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logos Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-primary-900 dark:text-surface-light mb-4">
+                    Trusted by Forward-Thinking Organizations
+                </h3>
+                <p class="text-lg text-primary-700 dark:text-surface-light/80">
+                    Building partnerships with innovative companies
                 </p>
+            </div>
+
+            <div class="flex justify-center">
+                <!-- Nyahari Logo -->
+                <a href="https://www.linkedin.com/company/nyahari" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="w-24 h-24 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 rounded-xl overflow-hidden">
+                    <img src="https://media.licdn.com/dms/image/v2/C560BAQEPQaf3QJxILw/company-logo_200_200/company-logo_200_200/0/1635328804277/nyahari_logo?e=2147483647&v=beta&t=UOP_8LJfUeYL-uXMVShbbs4qYkk-RLHkfu5pArYm8cQ" 
+                         alt="Nyahari Logo" 
+                         class="w-full h-full object-cover">
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="space-y-8" aria-labelledby="services-heading">
-        <div class="text-center">
-            <h2 id="services-heading" class="text-3xl md:text-4xl font-bold text-primary-900 dark:text-surface-light mb-4">
-                Our Core Services
-            </h2>
-            <p class="text-lg text-primary-700 dark:text-surface-light/80 max-w-2xl mx-auto">
-                Comprehensive AI and automation solutions that integrate seamlessly with your existing technology stack.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Service 1: Agentic AI Systems -->
-            <div class="bg-white dark:bg-primary-900/40 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary-900 dark:text-surface-light ml-4">
-                        Agentic AI Systems
-                    </h3>
-                </div>
-                <p class="text-primary-700 dark:text-surface-light/80 mb-6">
-                    Deploy autonomous, multi-agent intelligence to master complex business workflows.
-                </p>
-                <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Orchestrate operations and decision-making
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Automate compliance & reporting
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Complement your current technology stack
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Service 2: AI Chatbots -->
-            <div class="bg-white dark:bg-primary-900/40 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary-900 dark:text-surface-light ml-4">
-                        AI Chatbots
-                    </h3>
-                </div>
-                <p class="text-primary-700 dark:text-surface-light/80 mb-6">
-                    Chatbots that truly understand your business, connect with your data, and drive genuine automation.
-                </p>
-                <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Human-like support, onboarding, and sales bots
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Personalized, contextual conversations
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Embedded in your platforms, integrated with your tools
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Service 3: AI Automations -->
-            <div class="bg-white dark:bg-primary-900/40 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary-900 dark:text-surface-light ml-4">
-                        AI Automations
-                    </h3>
-                </div>
-                <p class="text-primary-700 dark:text-surface-light/80 mb-6">
-                    Robust, scalable automation for all your core processes—from operations and finance to customer engagement.
-                </p>
-                <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Automated data flows, approvals, and notifications
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Reliable and extensible framework
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Ongoing maintenance and enhancements
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Service 4: Web Applications -->
-            <div class="bg-white dark:bg-primary-900/40 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-accent-dark rounded-lg flex items-center justify-center">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-primary-900 dark:text-surface-light ml-4">
-                        Fast, Simple Web Applications
-                    </h3>
-                </div>
-                <p class="text-primary-700 dark:text-surface-light/80 mb-6">
-                    Rapid, scalable web solutions built with proven technology and smart AI features.
-                </p>
-                <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Quick launches and effortless upgrades
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Built-in document intelligence
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-4 h-4 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        Durable products, ready to scale as you grow
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section id="case-studies" class="space-y-8" aria-labelledby="case-studies-heading">
-        <div class="text-center">
-            <h2 id="case-studies-heading" class="text-3xl md:text-4xl font-bold text-primary-900 dark:text-surface-light mb-4">
-                Case Study Analysis: Real Industry Transformations
-            </h2>
-            <p class="text-lg text-primary-700 dark:text-surface-light/80 max-w-3xl mx-auto">
-                Documented outcomes from AI and automation implementations across different industries and use cases.
-            </p>
-        </div>
-
-        <!-- Case Studies Grid -->
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Case Study 1: Nyahari -->
-            <div class="bg-surface-light dark:bg-primary-900/30 rounded-xl p-8 space-y-6">
-                <h3 class="text-2xl font-bold text-primary-900 dark:text-surface-light">
-                    Nyahari: AI-Powered Cloud Kitchen Network
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-primary-900 dark:text-surface-light mb-6">
+                    Our Services
                 </h3>
-                
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Challenge</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            Nyahari, a network of home-based cloud kitchens using consumer web and device technology to serve homemade nutritious breakfast, needed to optimize operations across multiple kitchen locations.
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Implementation</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            The organization implemented agentic AI systems for demand forecasting, inventory management, and real-time delivery optimization across their distributed kitchen network.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-primary-200 dark:border-primary-700">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-primary-500">75%</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">food waste reduction</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-accent-light">40%</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">faster delivery</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-primary-600">3x</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">order capacity</div>
-                    </div>
-                </div>
+                <p class="text-lg text-primary-700 dark:text-surface-light/80 max-w-3xl mx-auto">
+                    Comprehensive AI and automation solutions that integrate seamlessly with your existing technology stack.
+                </p>
             </div>
 
-            <!-- Case Study 2: Ed-Tech -->
-            <div class="bg-surface-light dark:bg-primary-900/30 rounded-xl p-8 space-y-6">
-                <h3 class="text-2xl font-bold text-primary-900 dark:text-surface-light">
-                    Education Platform Support Automation
-                </h3>
-                
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Challenge</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            A leading education platform experienced significant delays in student support responses and fragmented access to learning resources and course materials.
-                        </p>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Service 1: Agentic AI Systems -->
+                <div class="bg-white dark:bg-primary-900/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent-light to-accent-light/70 rounded-xl flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary-900 dark:text-surface-light ml-4">
+                            Agentic AI Systems
+                        </h4>
                     </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Solution</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            The platform deployed a contextual AI chatbot system that integrated with live course data and student records to provide personalized, instant support.
-                        </p>
-                    </div>
+                    <p class="text-primary-700 dark:text-surface-light/80 mb-6 text-lg">
+                        Deploy autonomous, multi-agent intelligence to master complex business workflows.
+                    </p>
+                    <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Orchestrate operations and decision-making
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Automate compliance & reporting
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Complement your current technology stack
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-primary-200 dark:border-primary-700">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-primary-500">4x</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">faster support</div>
+                <!-- Service 2: AI Chatbots -->
+                <div class="bg-white dark:bg-primary-900/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary-900 dark:text-surface-light ml-4">
+                            AI Chatbots
+                        </h4>
                     </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-accent-light">40%</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">higher satisfaction</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-primary-600">90%</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">cost reduction</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Case Study 3: Retail -->
-            <div class="bg-surface-light dark:bg-primary-900/30 rounded-xl p-8 space-y-6">
-                <h3 class="text-2xl font-bold text-primary-900 dark:text-surface-light">
-                    Multi-Channel Retail Operations Study
-                </h3>
-                
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Challenge</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            A growing retail operation faced significant inefficiencies with manual reconciliation processes, frequent spreadsheet errors, and slow supplier communication cycles.
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Approach</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            The company adopted automated pipeline solutions to streamline sales tracking, inventory management, and supplier communications without disrupting daily operations.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-primary-200 dark:border-primary-700">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-primary-500">18+</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">hours saved/week</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-accent-light">25%</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">fewer errors</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-primary-600">∞</div>
-                        <div class="text-sm text-primary-700 dark:text-surface-light/80">seamless scaling</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Case Study 4: Finance -->
-            <div class="bg-surface-light dark:bg-primary-900/30 rounded-xl p-8 space-y-6">
-                <h3 class="text-2xl font-bold text-primary-900 dark:text-surface-light">
-                    Rapid FinTech Dashboard Deployment
-                </h3>
-                
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Challenge</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            A financial technology startup required an urgent real-time risk monitoring dashboard but encountered significant delays and prohibitive costs from traditional development vendors.
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-semibold text-accent-light mb-2">Solution</h4>
-                        <p class="text-primary-700 dark:text-surface-light/80">
-                            The organization implemented a Python-based web application featuring integrated AI capabilities for automated document analysis and real-time risk assessment alerts.
-                        </p>
-                    </div>
+                    <p class="text-primary-700 dark:text-surface-light/80 mb-6 text-lg">
+                        Chatbots that truly understand your business, connect with your data, and drive genuine automation.
+                    </p>
+                    <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            24/7 intelligent customer support
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Connect with your existing data
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Drive actual business outcomes
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="grid grid-cols-4 gap-2 pt-4 border-t border-primary-200 dark:border-primary-700">
-                    <div class="text-center">
-                        <div class="text-lg font-bold text-primary-500">10 days</div>
-                        <div class="text-xs text-primary-700 dark:text-surface-light/80">deployment time</div>
+                <!-- Service 3: AI Automations -->
+                <div class="bg-white dark:bg-primary-900/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent-muted to-primary-700 rounded-xl flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary-900 dark:text-surface-light ml-4">
+                            AI Automations
+                        </h4>
                     </div>
-                    <div class="text-center">
-                        <div class="text-lg font-bold text-accent-light">99.99%</div>
-                        <div class="text-xs text-primary-700 dark:text-surface-light/80">system uptime</div>
+                    <p class="text-primary-700 dark:text-surface-light/80 mb-6 text-lg">
+                        Robust, scalable automation for all your core processes—from operations and finance to customer engagement.
+                    </p>
+                    <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Process automation & optimization
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Document intelligence & processing
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Workflow orchestration
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Web Applications -->
+                <div class="bg-white dark:bg-primary-900/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary-600 to-accent-dark rounded-xl flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9-9a9 9 0 00-9 9m9-9v18"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold text-primary-900 dark:text-surface-light ml-4">
+                            Web Applications
+                        </h4>
                     </div>
-                    <div class="text-center">
-                        <div class="text-lg font-bold text-primary-600">100s</div>
-                        <div class="text-xs text-primary-700 dark:text-surface-light/80">active users</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-lg font-bold text-accent-dark">&lt;10%</div>
-                        <div class="text-xs text-primary-700 dark:text-surface-light/80">of agency cost</div>
-                    </div>
+                    <p class="text-primary-700 dark:text-surface-light/80 mb-6 text-lg">
+                        Rapid, scalable web solutions built with proven technology and smart AI features.
+                    </p>
+                    <ul class="space-y-3 text-primary-700 dark:text-surface-light/80">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Full-stack development
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            AI-enhanced user experiences
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-accent-light mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            Scalable cloud infrastructure
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="contact" class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl p-8 text-center text-white" aria-labelledby="contact-heading">
-        <h2 id="contact-heading" class="text-3xl md:text-4xl font-bold mb-6">
-            Ready to make AI and automation work for you?
-        </h2>
-        <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            No disruption. No wasted spend. Just effortless, intelligent transformation.
-        </p>
-        
-        <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 max-w-xl mx-auto">
-            <h3 class="text-2xl font-semibold mb-6">Let's talk.</h3>
-            <form id="contactForm" class="space-y-4" role="form" aria-label="Contact form for The Whelmed Engineers">
-                <label class="sr-only" for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required
-                       aria-required="true" aria-describedby="email-help"
-                       class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent">
+    <!-- The Team Section -->
+    <section id="team" class="py-20 bg-white/50 dark:bg-primary-900/30 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-primary-900 dark:text-surface-light mb-6">
+                    The Team
+                </h3>
+                <p class="text-lg text-primary-700 dark:text-surface-light/80 max-w-3xl mx-auto">
+                    A lean, focused team of AI engineers and automation specialists who deliver results.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white dark:bg-primary-900/40 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-24 h-24 bg-gradient-to-br from-accent-light to-accent-light/70 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white">AK</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary-900 dark:text-surface-light mb-2">
+                        Atharva Kawade
+                    </h4>
+                    <p class="text-accent-light font-semibold mb-4">Tech Lead</p>
+                    <p class="text-primary-700 dark:text-surface-light/80 text-sm">All things web and data specialist. 4+ years of designing products from scratch to deployment.</p>
+                </div>
+
+                <div class="bg-white dark:bg-primary-900/40 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white">VK</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-primary-900 dark:text-surface-light mb-2">
+                        Vinod Kamat
+                    </h4>
+                    <p class="text-accent-light font-semibold mb-4">Product Lead</p>
+                    <p class="text-primary-700 dark:text-surface-light/80 text-sm">Customer-first approach with hands on experience in tech.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-r from-accent-light to-primary-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white mb-12">
+                <h3 class="text-4xl font-bold mb-6">Ready to Get Started?</h3>
+                <p class="text-xl opacity-90">
+                    Let's discuss how we can transform your business with intelligent automation.
+                </p>
+            </div>
+            
+            <form hx-post="/contact" hx-target="#contact-response" hx-swap="outerHTML" 
+                  class="space-y-6 bg-white/10 backdrop-blur-md rounded-2xl p-8">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="sr-only" for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required
+                               class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="sr-only" for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required
+                               class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent">
+                    </div>
+                </div>
                 
-                <label class="sr-only" for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" placeholder="Phone Number (optional)"
-                       aria-describedby="phone-help"
                        class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent">
                 
-                <label class="sr-only" for="message">Project Description</label>
                 <textarea id="message" name="message" rows="4" placeholder="Tell us about your project or challenge..." required
-                          aria-required="true" aria-describedby="message-help"
                           class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent resize-none"></textarea>
                 
                 <button type="submit"
-                        class="w-full bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/90 transition-colors hover:scale-105 transform duration-200"
-                        aria-describedby="submit-help">
-                    Get In Touch
+                        class="w-full bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/90 transition-colors hover:scale-105 transform duration-200">
+                    Start Your Project
                 </button>
             </form>
-            <p class="text-white/80 text-sm mt-4" id="submit-help">
-                We'll get back to you within 24 hours.
+            
+            <div id="contact-response"></div>
+            
+            <p class="text-white/80 text-sm mt-6 text-center">
+                We'll get back to you within 24 hours with a custom solution proposal.
             </p>
         </div>
     </section>
 </div>
 
+<!-- Custom Styles -->
 <style>
-    /* Custom animations */
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
     }
     
     .animate-fade-in {
-        animation: fadeIn 0.6s ease-out;
+        animation: fadeIn 0.8s ease-out;
+    }
+    
+    /* Hide default navbar */
+    nav.sticky {
+        display: none !important;
     }
     
     /* Smooth scroll behavior */
     html {
         scroll-behavior: smooth;
     }
+    
+    /* Custom gradient backgrounds */
+    .bg-gradient-to-br {
+        background: linear-gradient(135deg, var(--tw-gradient-stops));
+    }
 </style>
 
 <script>
+    // Theme management (copied from base.html functionality)
+    const theme = {
+        init() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        },
+        toggle() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    };
+    
+    // Initialize theme
+    theme.init();
+    
+    // Theme toggle button
+    document.getElementById('theme-toggle').addEventListener('click', theme.toggle);
+    
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -502,11 +470,27 @@
         });
     });
 
-    // Contact form is now handled by the reusable ContactFormHandler in contact-utils.js
-    
-    // Add fade-in animation when elements come into view
-    AnimationUtils.fadeInOnScroll('.bg-white, .bg-surface-light', {
+    // Animate elements on scroll
+    const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all service cards and team cards
+    document.querySelectorAll('.bg-white, .bg-surface-light').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(el);
     });
 </script>
+                
