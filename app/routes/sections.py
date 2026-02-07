@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from app.core.config import templates
-from app.db.blog import BlogDatabase
+from app.services.markdown_blog import MarkdownBlogService
 from app.models.contact import ContactForm
 from app.services.email import send_contact_email, send_auto_reply_email
 
@@ -104,11 +104,13 @@ async def get_cases_section(request: Request):
 
 @router.get("/thoughts", response_class=HTMLResponse)
 async def get_thoughts_section(request: Request):
-    posts = await BlogDatabase.get_all_posts()
+    posts = MarkdownBlogService.get_all_posts()
+    # Convert post objects to dictionaries for template rendering
+    posts_dicts = [post.to_dict() for post in posts]
     context = {
         "request": request, 
         "section_id": "thoughts",
-        "posts": posts
+        "posts": posts_dicts
     }
 
     if is_htmx_request(request):

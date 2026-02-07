@@ -1,8 +1,7 @@
-from fastapi import APIRouter, Request, HTTPException, Query
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
-from typing import Optional
 from app.core.config import templates
-from app.db.blog import BlogDatabase
+from app.services.markdown_blog import MarkdownBlogService
 
 router = APIRouter()
 
@@ -13,13 +12,13 @@ def is_htmx_request(request: Request) -> bool:
 @router.get("/thoughts/{slug}", response_class=HTMLResponse)
 async def get_blog_post_by_slug(request: Request, slug: str):
     """Get a specific blog post by slug under /thoughts/"""
-    post = await BlogDatabase.get_post_by_slug(slug)
+    post = MarkdownBlogService.get_post_by_slug(slug)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
 
     context = {
         "request": request,
-        "post": post
+        "post": post.to_dict()
     }
     
     if is_htmx_request(request):
@@ -29,10 +28,3 @@ async def get_blog_post_by_slug(request: Request, slug: str):
         # Return full page for direct access
         context["content_template"] = "detail.html"
         return templates.TemplateResponse("base.html", context)
-
-# Backwards compatibility route
-@router.get("/scribblings/{slug}", response_class=HTMLResponse)
-async def redirect_scribblings_post_to_thoughts(request: Request, slug: str):
-    """Redirect old scribblings/{slug} URL to thoughts/{slug}"""
-    from fastapi.responses import RedirectResponse
-    return RedirectResponse(url=f"/thoughts/{slug}", status_code=301)
