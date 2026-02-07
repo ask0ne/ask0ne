@@ -6,3 +6,5 @@ __pycache__/
 *.log
 template.json
 markdown_syntax.md
+venv
+BLOGGING_GUIDE.md
