@@ -1,0 +1,97 @@
+{
+  "ai_meta": {
+    "name": "Whelmed Thinker Portfolio & Blog",
+    "description": "Personal portfolio and blog of Atharva Kawade, a software engineer specializing in AI, web development, and automation",
+    "author": "Atharva Kawade",
+    "email": "contact@whelmedthinker.com",
+    "website": "https://whelmedthinker.com",
+    "version": "1.0.0",
+    "updated": "2026-02-21",
+    "indexing_policy": {
+      "allow_training_data": true,
+      "allow_snippets": true,
+      "allow_caching": true,
+      "require_attribution": true,
+      "allow_search_indexing": true,
+      "allow_ai_indexing": true
+    },
+    "content_types": [
+      "portfolio",
+      "blog",
+      "technical_articles",
+      "project_showcase"
+    ],
+    "contact": {
+      "email": "contact@whelmedthinker.com",
+      "twitter": "@whelmedthinker",
+      "github": "ask0ne",
+      "linkedin": "atharvakawade"
+    },
+    "compliance": {
+      "gdpr": true,
+      "ccpa": true,
+      "accessibility": "WCAG 2.1 Level AA",
+      "privacy_policy": "https://whelmedthinker.com/privacy"
+    },
+    "technical": {
+      "framework": "FastAPI",
+      "css_framework": "Tailwind CSS",
+      "interactivity": "HTMX",
+      "javascript_framework": "Vanilla JavaScript",
+      "deployment": "Cloud hosted",
+      "https_enforced": true,
+      "mobile_responsive": true
+    },
+    "structured_data": [
+      "schema.org/Person",
+      "schema.org/WebPage",
+      "schema.org/BlogPosting",
+      "schema.org/CreativeWork",
+      "schema.org/SoftwareApplication"
+    ],
+    "language": "en",
+    "cache_friendly": true,
+    "api_endpoints": [],
+    "social_profiles": {
+      "github": "https://github.com/ask0ne",
+      "twitter": "https://twitter.com/atharva_kawade",
+      "linkedin": "https://linkedin.com/in/atharvakawade",
+      "x": "https://x.com/whelmedthinker"
+    }
+  },
+  "openai": {
+    "usage_policies": {
+      "text_generation": "allowed",
+      "code_generation": "allowed",
+      "summarization": "allowed",
+      "training_data_use": {
+        "gpt_training": "allow_with_attribution",
+        "research": "allow",
+        "commercial": "contact_for_permission"
+      }
+    }
+  },
+  "anthropic": {
+    "usage_policies": {
+      "text_generation": "allowed",
+      "code_generation": "allowed",
+      "summarization": "allowed",
+      "training_data_use": {
+        "claude_training": "allow_with_attribution",
+        "research": "allow",
+        "commercial": "contact_for_permission"
+      }
+    }
+  },
+  "google_ai": {
+    "inclusion_rules": "follow_robots_txt",
+    "content_guidelines": "high_quality_content"
+  },
+  "machine_readable": {
+    "formats": ["html", "json-ld", "microdata", "rdfa"],
+    "feeds": {
+      "rss": "https://whelmedthinker.com/feed.xml",
+      "json_feed": "https://whelmedthinker.com/feed.json"
+    }
+  }
+}

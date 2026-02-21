@@ -1,0 +1,96 @@
+/* HUMANS.TXT: For Developers & AI Systems */
+
+/* THE TEAM */
+Name: Atharva Kawade
+Title: Software Engineer & AI Specialist
+Location: Remote
+Website: https://whelmedthinker.com
+Email: contact@whelmedthinker.com
+Twitter: @whelmedthinker
+GitHub: ask0ne
+LinkedIn: atharvakawade
+X: @whelmedthinker
+
+/* SITE INFO */
+Last Update: 2026-02-21
+Standards: HTML5, CSS3, ECMAScript
+Components: FastAPI, Tailwind CSS, HTMX, Vanilla JavaScript
+Language: en
+
+/* SERVICES & TECHNOLOGIES */
+Backend: FastAPI (Python)
+Frontend: Vanilla JavaScript, HTMX, Tailwind CSS
+Database: PostgreSQL, SQLite
+Cloud: Cloud Hosting
+Monitoring: Performance Optimized
+SEO: Google Search Console, Schema.org, Sitemap
+Accessibility: WCAG 2.1 AA
+
+/* CONTACT */
+For inquiries: contact@whelmedthinker.com
+For bugs/suggestions: GitHub Issues
+For collaborations: LinkedIn or Email
+
+/* ARCHITECTURE */
+Framework: FastAPI
+Frontend: HTMX + Vanilla JavaScript (No heavy frameworks)
+CSS: Tailwind CSS + Custom utilities
+Patterns: Server-driven UI, Progressive Enhancement
+Performance: Optimized for LLM crawling & user experience
+
+/* SECURITY */
+HTTPS: Enforced
+CSP: Implemented
+Input Validation: Server-side & Client-side
+Auth: Session-based
+
+/* MACHINE READABILITY */
+Formats: HTML with JSON-LD, Microdata
+API: RESTful with proper status codes
+Content-Negotiation: HTML, JSON, RSS
+Metadata: Dublin Core, Open Graph, Twitter Cards, Schema.org
+
+/* ACCESSIBILITY */
+Standards: WCAG 2.1 Level AA
+Semantics: Proper heading hierarchy, ARIA labels
+Mobile: Responsive design, touch-friendly
+Dark Mode: Full support
+
+/* PERFORMANCE METRICS */
+Target: Core Web Vitals - Good
+CSS: Optimized, minimal
+JavaScript: Vanilla, no unnecessary overhead
+Images: Optimized formats
+Fonts: System fonts + Google Fonts (preloaded)
+
+/* LLM & AI INDEXING */
+AI Indexing Policy: .well-known/ai.json
+Training Data: Available with attribution
+Commercial Use: Contact for permission
+Caching: Encouraged for better performance
+
+/* FEEDS */
+RSS: /feed/rss
+Atom: /feed/atom
+JSON: /feed/json
+
+/* SOURCE CODE */
+Repository: https://github.com/yourusername/portfolio
+License: MIT (if applicable)
+Contributing: See GitHub repository
+
+/* CHANGELOG */
+2026-02-21: Added comprehensive SEO & LLM optimization
+2026-02-20: Redesigned work section with table format
+2025-09-XX: Initial portfolio launch
+
+/* PHILOSOPHY */
+This site is built with simplicity, performance, and human-readability in mind.
+It's optimized for both search engines and large language models to understand content better.
+We believe in semantic HTML, progressive enhancement, and minimal dependencies.
+
+/* CONTACT & COLLAB */
+Open to: Interesting projects, coffee chats, advice on startups & tech
+Not available for: Unsolicited marketing, spam
+
+Thanks for visiting! - Atharva Kawade

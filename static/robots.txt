@@ -1,0 +1,69 @@
+# SEO Robotics - Standard Crawlers
+User-agent: *
+Allow: /
+Disallow: /__pycache__/
+Disallow: /venv/
+Disallow: /.git/
+Disallow: /migrations/
+Disallow: /static/
+Disallow: /api/private/
+Disallow: /*.py$
+Disallow: *.env
+
+# Specific LLM/AI Crawlers - Allow comprehensive indexing
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+User-agent: OAI-SearchBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 0
+
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+# Sitemap Location
+Sitemap: https://whelmedthinker.com/sitemap.xml
+Sitemap: https://whelmedthinker.com/sitemap-blog.xml
+
+# Crawl-delay for general web crawlers
+Crawl-delay: 1
+Request-rate: 30/60
+
+# Prevent crawling of comment spam and tracking
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 10

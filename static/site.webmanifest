@@ -1,0 +1,109 @@
+{
+  "name": "Whelmed Thinker - Software Engineer & Builder",
+  "short_name": "Whelmed Thinker",
+  "description": "Personal portfolio and blog of Atharva Kawade, a software engineer specializing in all things tech and web development",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0F7173",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "technology",
+    "business"
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot-540x720.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/assets/images/screenshot-1280x720.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View My Work",
+      "short_name": "Work",
+      "description": "View my software engineering projects and portfolio",
+      "url": "/work",
+      "icons": [
+        {
+          "src": "/assets/images/icon-work.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Read My Thoughts",
+      "short_name": "Thoughts",
+      "description": "Read my blog posts and technical thoughts",
+      "url": "/thoughts",
+      "icons": [
+        {
+          "src": "/assets/images/icon-thoughts.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "file",
+          "accept": [
+            "image/*"
+          ]
+        }
+      ]
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+atharva",
+      "url": "/protocol?url=%s"
+    }
+  ],
+  "prefer_related_applications": false
+}
