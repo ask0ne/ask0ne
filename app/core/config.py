@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from typing import Optional, Any, Dict
 from functools import wraps
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from dotenv import load_dotenv
@@ -13,6 +14,15 @@ import markdown
 # Load environment variables
 load_dotenv()
 
+# Files crawlers and browsers only ever look for at the site root
+ROOT_FILES = {
+    "robots.txt": "text/plain",
+    "sitemap.xml": "application/xml",
+    "humans.txt": "text/plain",
+    "site.webmanifest": "application/manifest+json",
+    "browserconfig.xml": "application/xml",
+}
+
 def create_app() -> FastAPI:
     app = FastAPI(title="atharva")
     
@@ -20,6 +30,14 @@ def create_app() -> FastAPI:
     app.mount("/static", StaticFiles(directory="static"), name="static")
     # Serve legacy assets (e.g., resume PDF) and any asset-linked resources
     app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+
+    for filename, media_type in ROOT_FILES.items():
+        def make_handler(filename=filename, media_type=media_type):
+            async def serve_root_file():
+                return FileResponse(f"static/{filename}", media_type=media_type)
+            return serve_root_file
+
+        app.add_api_route(f"/{filename}", make_handler(), include_in_schema=False)
     
     return app
 

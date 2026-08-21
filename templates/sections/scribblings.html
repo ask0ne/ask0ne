@@ -1,9 +1,9 @@
 <div class="max-w-4xl mx-auto">
-    <div class="bg-surface-light/50 dark:bg-surface-dark/50 rounded-lg shadow-sm p-6 sm:p-8 mb-6 border border-primary-500/10 backdrop-blur-sm">
+    <div class="bg-surface-light/50 dark:bg-surface-dark/50 rounded-lg shadow-sm p-6 sm:p-8 mb-6 border border-primary-500/30 dark:border-surface-light/20 backdrop-blur-sm">
         <!-- heading -->
-        <h2 class="text-2xl sm:text-3xl font-bold text-accent-light dark:text-accent-dark mb-2">
+        <h1 class="text-2xl sm:text-3xl font-bold text-accent-light dark:text-accent-dark mb-2">
             thoughts
-        </h2>
+        </h1>
 
         <!-- muted paragraph (consistent spacing) -->
         <p class="text-sm text-primary-900/70 dark:text-surface-light/70 mb-6">
@@ -15,8 +15,9 @@
             {% if posts %}
             <div class="space-y-6">
                 {% for post in posts %}
-                <article class="border-b border-primary-500/10 pb-6 last:border-b-0">
-                    <button hx-get="/thoughts/{{ post.slug }}" hx-target="#main-content" hx-push-url="/thoughts/{{ post.slug }}"
+                <article class="border-b border-primary-500/30 dark:border-surface-light/20 pb-6 last:border-b-0">
+                    <a href="/thoughts/{{ post.slug }}" hx-get="/thoughts/{{ post.slug }}" hx-target="#main-content"
+                        hx-indicator="#loading" hx-push-url="true"
                         class="block w-full text-left cursor-pointer">
                         <div class="text-sm text-primary-900/70 dark:text-surface-light/70 mb-2">
                             <time>{{ post.created_at.strftime('%B %d, %Y') if post.created_at else 'Date unknown' }}</time>
@@ -25,11 +26,11 @@
                             <p class="text-primary-900 dark:text-surface-light text-base font-medium">{{ post.title }}</p>
                         </div>
                         {% if post.tags %}
-                        <div class="text-xs text-primary-900/60 dark:text-surface-light/60">
+                        <div class="text-xs text-primary-900/70 dark:text-surface-light/70">
                             {% for tag in post.tags %}#{{ tag }}{% if not loop.last %} {% endif %}{% endfor %}
                         </div>
                         {% endif %}
-                    </button>
+                    </a>
                 </article>
                 {% endfor %}
             </div>
