@@ -334,8 +334,7 @@
                 </p>
             </div>
             
-            <form hx-post="/contact" hx-target="#contact-response" hx-swap="outerHTML" 
-                  class="space-y-6 bg-white/10 backdrop-blur-md rounded-2xl p-8">
+            <form id="contactForm" class="space-y-6 bg-white/10 backdrop-blur-md rounded-2xl p-8">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <label class="sr-only" for="name">Full Name</label>
@@ -362,8 +361,6 @@
                     Start Your Project
                 </button>
             </form>
-            
-            <div id="contact-response" role="status" aria-live="polite"></div>
             
             <p class="text-white/80 text-sm mt-6 text-center">
                 We'll get back to you within 24 hours with a custom solution proposal.

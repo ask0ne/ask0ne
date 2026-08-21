@@ -13,6 +13,8 @@ class NotificationSystem {
             this.notificationContainer = document.createElement('div');
             this.notificationContainer.id = 'notification-container';
             this.notificationContainer.className = 'fixed top-4 right-4 z-50 space-y-2';
+            this.notificationContainer.setAttribute('role', 'status');
+            this.notificationContainer.setAttribute('aria-live', 'polite');
             document.body.appendChild(this.notificationContainer);
         } else {
             this.notificationContainer = document.getElementById('notification-container');
