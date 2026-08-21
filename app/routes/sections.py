@@ -1,6 +1,6 @@
 import json
 
-from fastapi import APIRouter, Form, Request, HTTPException
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from app.core.config import templates
 from app.services.markdown_blog import MarkdownBlogService
@@ -139,16 +139,11 @@ async def redirect_mindfield_to_tangents(request: Request):
     return RedirectResponse(url="/tangents", status_code=301)
 
 @router.post("/contact")
-async def submit_contact_form(
-    email: str = Form(...),
-    message: str = Form(...),
-    phone: str = Form(None),
-):
+async def submit_contact_form(form_data: ContactForm):
     """
     Handle contact form submission and send emails
     """
     try:
-        form_data = ContactForm(email=email, message=message, phone=phone or None)
         # Send notification email to the business
         email_sent = await send_contact_email(form_data)
         

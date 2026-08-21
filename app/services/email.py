@@ -36,6 +36,7 @@ async def send_contact_email(form_data: ContactForm) -> bool:
         # Render email template
         template = template_env.get_template('contact_form.html')
         html_body = template.render(
+            name=form_data.name,
             email=form_data.email,
             phone=form_data.phone,
             message=form_data.message,
@@ -68,6 +69,7 @@ async def send_auto_reply_email(form_data: ContactForm) -> bool:
         # Render auto-reply template
         template = template_env.get_template('auto_reply.html')
         html_body = template.render(
+            name=form_data.name,
             email=form_data.email,
             phone=form_data.phone,
             message_preview=form_data.message[:200] + ('...' if len(form_data.message) > 200 else '')

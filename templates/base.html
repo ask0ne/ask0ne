@@ -141,11 +141,9 @@
 
 <body
     class="bg-surface-light text-primary-900 dark:bg-surface-dark dark:text-surface-light min-h-screen transition-colors duration-200 font-sans">
-    <a href="#main-content" class="skip-link">skip to content</a>
-
     <!-- Mobile-first navigation -->
     <nav aria-label="Main"
-        class="sticky top-0 z-50 bg-surface-light/80 dark:bg-surface-dark/80 border-b border-primary-500/30 dark:border-surface-light/20 backdrop-blur-sm">
+        class="sticky top-0 z-50 bg-surface-light/80 dark:bg-surface-dark/80 border-b border-primary-500/10 backdrop-blur-sm">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Desktop Navigation -->
@@ -205,7 +203,7 @@
 
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu"
-            class="md:hidden hidden bg-surface-light dark:bg-surface-dark border-t border-primary-500/30 dark:border-surface-light/20 animate-slide-down">
+            class="md:hidden hidden bg-surface-light dark:bg-surface-dark border-t border-primary-500/10 animate-slide-down">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="/me" hx-get="/me" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
                     data-section="me"
@@ -239,7 +237,7 @@
     <!-- Loading indicator -->
     <div id="loading" class="htmx-indicator fixed top-20 left-1/2 transform -translate-x-1/2 z-40" role="status">
         <div
-            class="bg-surface-light/90 dark:bg-surface-dark/90 rounded-lg shadow-lg backdrop-blur-md px-4 py-2 flex items-center space-x-2 border border-primary-500/30 dark:border-surface-light/20 animate-fade-in">
+            class="bg-surface-light/90 dark:bg-surface-dark/90 rounded-lg shadow-lg backdrop-blur-md px-4 py-2 flex items-center space-x-2 border border-primary-500/20 animate-fade-in">
             <div
                 class="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-500 dark:border-accent-dark" aria-hidden="true">
             </div>
