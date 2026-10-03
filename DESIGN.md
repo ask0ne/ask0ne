@@ -242,8 +242,10 @@ The repo is **public**. Anything committed is public and scrapable.
   interaction (`data-src`, no `src` in HTML).
 - Strip **all** metadata (EXIF, GPS, ICC, XMP) before use. Verify nothing
   remains.
-- Set `MEDIA_SECRET` in the environment in production. Copy `private/*.jpg`
-  to the server out-of-band; it is not in git.
+- Set `MEDIA_SECRET` in the environment in production. The image itself is not in git:
+  on Railway it lives in `PRIVATE_<NAME>_B64_0..n` variables (base64, 30,000-character
+  chunks, Railway's per-variable limit is 32,768) and `private_media` rebuilds
+  `private/<name>.jpg` from them on first use. Locally just keep the file in `private/`.
 - Nothing is ever fully un-saveable (screenshots). Don't claim otherwise.
 
 ---

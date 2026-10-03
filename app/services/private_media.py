@@ -5,6 +5,9 @@ reachable through a time-limited signed URL that the page hands out. This keeps
 it out of the repo, out of /static, out of crawlers' reach and out of caches.
 It cannot stop a person who is looking at it from taking a screenshot.
 """
+from __future__ import annotations
+
+import base64
 import hashlib
 import hmac
 import logging
@@ -56,6 +59,17 @@ def is_allowed_request(headers: Mapping[str, str]) -> bool:
     return bool(ua) and not _BLOCKED_UA.search(ua) and dest in (None, "image") and site in (None, "same-origin")
 
 
+def _materialize_from_env(path: Path, name: str) -> None:
+    """Containers can't get git-ignored files, so a private image may arrive as base64 split over
+    PRIVATE_<NAME>_B64_0, _1, ... (each chunk stays under Railway's 32,768-character variable limit; 30,000 is used)."""
+    chunks = []
+    while chunk := os.getenv(f"PRIVATE_{name.upper()}_B64_{len(chunks)}"):
+        chunks.append(chunk)
+    if chunks:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(base64.b64decode("".join(chunks)))
+
+
 def resolve(name: str, token: str) -> Path | None:
     """Return the file path if the token is valid and unexpired, else None."""
     if not _NAME.fullmatch(name):
@@ -68,4 +82,6 @@ def resolve(name: str, token: str) -> Path | None:
     if exp < time.time() or not hmac.compare_digest(sig, _sign(exp, name)):
         return None
     path = PRIVATE_DIR / f"{name}.jpg"
+    if not path.is_file():
+        _materialize_from_env(path, name)
     return path if path.is_file() else None
