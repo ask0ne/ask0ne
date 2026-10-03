@@ -1,45 +1,51 @@
-<div class="max-w-4xl mx-auto">
-    <div class="bg-surface-light/50 dark:bg-surface-dark/50 rounded-lg shadow-sm p-6 sm:p-8 border border-primary-500/10 backdrop-blur-sm">
-        <!-- heading -->
-        <h1 class="text-2xl sm:text-3xl font-bold text-accent-light dark:text-accent-dark mb-2">
-            atharva kawade
-        </h1>
+<div class="v2">
+    <header class="h">
+        <h1>atharva kawade</h1>
+        <p class="sub">software engineer with <strong>5+ years</strong> of experience in early stage startups building stuff</p>
+    </header>
 
-        <!-- muted paragraph (consistent spacing) -->
-        <p class="text-sm text-primary-900/70 dark:text-surface-light/70 mb-6">
-            software engineer with 4+ years of experience in early stage startups building stuff
-        </p>
-
-        <!-- actual content -->
-        <div class="prose max-w-none">
-            <p class="text-primary-900 dark:text-surface-light mb-4 leading-relaxed">
-                i'm a software engineer, ai optimist and a wannabe motorcyclist
-            </p>
-            <p class="text-primary-900 dark:text-surface-light mb-6 leading-relaxed">
-                currently working at <a
-                    href="https://ariseall.com"
-                    class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-all duration-200 "
-                    target="_blank" rel="noopener">arise</a>.
-            </p>
-            <p class="text-primary-900 dark:text-surface-light mb-6 leading-relaxed">
-                formerly part of <a href="https://www.linkedin.com/company/oleander-financial-technologies-pvt-ltd//"
-                    class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-all duration-200 "
-                    target="_blank" rel="noopener">oleander</a>, where i built indian trading web application and dipped my toes into algo trading.
-                <br>
-                started out at <a href="https://mortgagekart.com"
-                    class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-all duration-200 "
-                    target="_blank" rel="noopener">mortgage kart</a> building etl pipelines in python & airflow, and web applications in fastapi, django, htmx.
-            </p>
-            <p class="text-primary-900 dark:text-surface-light mb-6 leading-relaxed">
-                hit me up for coding or coffee with anything <a href="https://nohello.net/en/"
-                    class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-all duration-200 "
-                    target="_blank" rel="noopener">other than hello</a>.
-            </p>
-            <p class="text-primary-900 dark:text-surface-light leading-relaxed">
-                you can find me on <a href="https://www.linkedin.com/in/atharvakawade/"
-                    class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-all duration-200 "
-                    target="_blank" rel="noopener">linkedin</a>, <a href="https://github.com/ask0ne" class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-all duration-200 ">github</a> and <a href="https://x.com/whelmedthinker" class="text-accent-light dark:text-accent-dark hover:opacity-80 transition-all duration-200 ">X</a>.
-            </p>
-        </div>
+    <div class="s">
+        <p class="bikep">i'm a <strong>software engineer</strong>, ai optimist and a wannabe <button type="button" class="bike-t" aria-expanded="false" aria-controls="bike-pop">motorcyclist</button><span id="bike-pop" class="bike-pop" role="group" aria-label="photo"><img data-src="{{ private_url('bike') }}" width="522" height="700" alt="a photo of atharva with a motorcycle" draggable="false" oncontextmenu="return false"></span></p>
+        <p>currently working at <a href="https://ariseall.com" target="_blank" rel="noopener">arise</a>.</p>
+        <p>formerly part of <a href="https://www.linkedin.com/company/oleander-financial-technologies-pvt-ltd//" target="_blank" rel="noopener">oleander</a>, where i built indian trading web application and dipped my toes into algo trading.<br>started out at <a href="https://mortgagekart.com" target="_blank" rel="noopener">mortgage kart</a> building etl pipelines in python &amp; airflow, and web applications in fastapi, django, htmx.</p>
+        <p>hit me up for coding or coffee with anything <a href="https://nohello.net/en/" target="_blank" rel="noopener">other than hello</a>.</p>
+        <p>you can find me on <a href="https://www.linkedin.com/in/atharvakawade/" target="_blank" rel="noopener">linkedin</a>, <a href="https://github.com/ask0ne">github</a> and <a href="https://x.com/whelmedthinker">x</a>.</p>
     </div>
+    <p class="quirk">last proofread: not recently.</p>
 </div>
+
+<script>
+(function () {
+    // photo shows on hover (desktop) and toggles on tap/click (touch); esc or an outside click closes it.
+    // listeners sit on this page's own elements; the two document ones drop themselves once the page is swapped out.
+    const btn = document.querySelector('.bike-t');
+    const pop = document.getElementById('bike-pop');
+    const img = pop.querySelector('img');
+    const hoverable = matchMedia('(hover: hover)').matches;
+    let timer;
+
+    const set = (open) => {
+        if (open && !img.getAttribute('src')) {
+            // fetched on first open, never on page load; if it fails (expired link, blocked client) the trigger goes inert
+            img.addEventListener('error', () => { pop.remove(); btn.disabled = true; }, { once: true });
+            img.src = img.dataset.src;
+        }
+        pop.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+    };
+    const hover = (open) => () => {
+        if (!hoverable) return;
+        clearTimeout(timer);
+        if (open) set(true); else timer = setTimeout(() => set(false), 200);
+    };
+    const onDocument = (type, handler) => {
+        const wrapped = (e) => pop.isConnected ? handler(e) : document.removeEventListener(type, wrapped);
+        document.addEventListener(type, wrapped);
+    };
+
+    [btn, pop].forEach((el) => { el.addEventListener('mouseenter', hover(true)); el.addEventListener('mouseleave', hover(false)); });
+    btn.addEventListener('click', () => set(!pop.classList.contains('open')));
+    onDocument('click', (e) => { if (!e.target.closest('.bike-t, .bike-pop')) set(false); });
+    onDocument('keydown', (e) => { if (e.key === 'Escape') set(false); });
+})();
+</script>

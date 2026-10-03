@@ -8,3 +8,9 @@ template.json
 markdown_syntax.md
 venv
 BLOGGING_GUIDE.md
+
+# local-only design mockups, never committed
+mockups/
+
+# private media: served only through a signed route, never committed (repo is public)
+private/

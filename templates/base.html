@@ -61,6 +61,7 @@
     <script src="https://unpkg.com/htmx.org@1.9.8"></script>
     <script src="/static/js/contact-utils.js"></script>
     <link rel="stylesheet" href="/assets/css/utilities.css">
+    <link rel="stylesheet" href="/assets/css/site.css">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -120,17 +121,12 @@
                         'sans': ['Inter', 'system-ui', 'sans-serif']
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.2s ease-in-out',
-                        'slide-down': 'slideDown 0.2s ease-out'
+                        'fade-in': 'fadeIn 0.2s ease-in-out'
                     },
                     keyframes: {
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' }
-                        },
-                        slideDown: {
-                            '0%': { transform: 'translateY(-10px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
                         }
                     }
                 }
@@ -139,132 +135,38 @@
     </script>
 </head>
 
-<body
-    class="bg-surface-light text-primary-900 dark:bg-surface-dark dark:text-surface-light min-h-screen transition-colors duration-200 font-sans">
-    <!-- Mobile-first navigation -->
-    <nav aria-label="Main"
-        class="sticky top-0 z-50 bg-surface-light/80 dark:bg-surface-dark/80 border-b border-primary-500/10 backdrop-blur-sm">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Desktop Navigation -->
-                <div class="hidden md:block">
-                    <div class="flex items-baseline space-x-8">
-                        <a href="/me" hx-get="/me" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                            data-section="me"
-                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
-                            me
-                        </a>
-                        <a href="/work" hx-get="/work" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                            data-section="work"
-                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
-                            work
-                        </a>
-                        <a href="/thoughts" hx-get="/thoughts" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                            data-section="thoughts"
-                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
-                            thoughts
-                        </a>
-                        <a href="/tangents" hx-get="/tangents" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                            data-section="tangents"
-                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
-                            tangents
-                        </a>
-                        <a href="/cv" hx-get="/cv" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                            data-section="cv"
-                            class="nav-link text-accent-light dark:text-accent-dark hover:opacity-80 font-bold text-sm lowercase transition-colors">
-                            cv
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Logo/Brand -->
-                <div class="flex-shrink-0">
-                    <button id="theme-toggle" type="button" aria-pressed="false"
-                        aria-label="Switch to dark theme"
-                        class="min-h-11 min-w-11 text-xl font-bold text-primary-900 dark:text-surface-light hover:opacity-80 transition-all duration-200 hover:scale-105">
-                        <span aria-hidden="true">(■_■¬)</span>
-                    </button>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu"
-                        aria-label="Open navigation menu"
-                        class="inline-flex items-center justify-center min-h-11 min-w-11 p-2 rounded-md text-primary-600 hover:text-primary-900 dark:text-accent-muted dark:hover:text-surface-light hover:bg-primary-50 dark:hover:bg-primary-700 transition-colors">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24" aria-hidden="true"
-                            focusable="false">
-                            <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu"
-            class="md:hidden hidden bg-surface-light dark:bg-surface-dark border-t border-primary-500/10 animate-slide-down">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="/me" hx-get="/me" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                    data-section="me"
-                    class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors px-3 py-3 min-h-11 rounded-md flex items-center w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
-                    me
-                </a>
-                <a href="/work" hx-get="/work" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                    data-section="work"
-                    class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors px-3 py-3 min-h-11 rounded-md flex items-center w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
-                    work
-                </a>
-                <a href="/cv" hx-get="/cv" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                    data-section="cv"
-                    class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors px-3 py-3 min-h-11 rounded-md flex items-center w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
-                    cv
-                </a>
-                <a href="/thoughts" hx-get="/thoughts" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                    data-section="thoughts"
-                    class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors px-3 py-3 min-h-11 rounded-md flex items-center w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
-                    thoughts
-                </a>
-                <a href="/tangents" hx-get="/tangents" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                    data-section="tangents"
-                    class="mobile-nav-link text-accent-light dark:text-accent-dark hover:opacity-80 transition-colors px-3 py-3 min-h-11 rounded-md flex items-center w-full text-left lowercase hover:bg-primary-50 dark:hover:bg-primary-700">
-                    tangents
-                </a>
-            </div>
+<body class="v2-body min-h-screen transition-colors duration-200 font-sans" data-section="{{ section_id|default('') }}">
+    <!-- Navigation -->
+    <nav aria-label="Main" class="v2-nav">
+        <div class="v2-navin">
+            {% for s in ['me', 'work', 'thoughts', 'tangents', 'cv'] %}
+            <a href="/{{ s }}" hx-get="/{{ s }}" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
+                data-section="{{ s }}" class="nav-link lowercase">{{ s }}</a>
+            {% endfor %}
+            <span class="sp"></span>
+            <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                <span aria-hidden="true">(■_■¬)</span>
+            </button>
         </div>
     </nav>
 
     <!-- Loading indicator -->
     <div id="loading" class="htmx-indicator fixed top-20 left-1/2 transform -translate-x-1/2 z-40" role="status">
-        <div
-            class="bg-surface-light/90 dark:bg-surface-dark/90 rounded-lg shadow-lg backdrop-blur-md px-4 py-2 flex items-center space-x-2 border border-primary-500/20 animate-fade-in">
-            <div
-                class="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-500 dark:border-accent-dark" aria-hidden="true">
-            </div>
-            <span class="text-sm text-primary-900 dark:text-surface-light">Loading...</span>
-        </div>
+        <div class="v2-loading"><i aria-hidden="true"></i><span id="loading-verb">loading...</span></div>
     </div>
 
     <!-- Announces htmx page changes to screen readers -->
     <p id="route-announcer" class="sr-only" role="status" aria-live="polite"></p>
 
     <!-- Main content -->
-    <main id="main-content" tabindex="-1" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main id="main-content" tabindex="-1" class="v2-main">
         {% block content %}
         {% if content_template %}
             {% include content_template %}
         {% endif %}
         {% endblock %}
     </main>
-<!--
-    <footer class="mt-16 py-8 border-t border-primary-500/10">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-xs text-primary-900/70 dark:text-surface-light/70">
-                built using <span class="text-accent-light dark:text-accent-dark font-medium">fastapi</span>, <span class="text-accent-light dark:text-accent-dark font-medium">htmx</span> and <span class="text-accent-light dark:text-accent-dark font-medium">tailwindcss</span>
-            </p>
-        </div>
-    </footer>
--->
+<footer class="v2-foot v2-main"><p>built using <b>fastapi</b>, <b>htmx</b> and <b>tailwindcss</b></p></footer>
 
     <script>
         // Theme management
@@ -310,38 +212,19 @@
         // Theme toggle button
         document.getElementById('theme-toggle').addEventListener('click', () => theme.toggle());
 
-        // Mobile menu toggle
-        const mobileMenu = {
-            btn: document.getElementById('mobile-menu-btn'),
-            panel: document.getElementById('mobile-menu'),
-            set(open) {
-                this.panel.classList.toggle('hidden', !open);
-                this.btn.setAttribute('aria-expanded', String(open));
-                this.btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-            },
-            isOpen() {
-                return !this.panel.classList.contains('hidden');
-            }
-        };
 
-        mobileMenu.btn.addEventListener('click', () => mobileMenu.set(!mobileMenu.isOpen()));
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.isOpen()) {
-                mobileMenu.set(false);
-                mobileMenu.btn.focus();
-            }
-        });
-
-        // Close mobile menu when clicking on nav links
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.set(false));
+        // loading verb: one at random per request
+        const loadingVerbs = ['cogitating', 'cooking', 'pondering', 'tinkering', 'marinating', 'percolating', 'noodling',
+            'ruminating', 'simmering', 'untangling', 'reticulating', 'brewing', 'conjuring', 'enduring'];
+        document.body.addEventListener('htmx:beforeRequest', () => {
+            document.getElementById('loading-verb').textContent =
+                loadingVerbs[Math.floor(Math.random() * loadingVerbs.length)] + '...';
         });
 
         // Active state management — drives styling via aria-current, so desktop
         // and mobile links stay in sync from one source of truth.
         function markActiveSection(sectionId) {
-            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+            document.querySelectorAll('.nav-link').forEach(link => {
                 if (link.dataset.section === sectionId) {
                     link.setAttribute('aria-current', 'page');
                 } else {
@@ -351,6 +234,14 @@
         }
 
         markActiveSection('{{ section_id|default("") }}');
+
+        // htmx skips 4xx responses by default; let the styled 404 swap in
+        document.body.addEventListener('htmx:beforeSwap', function (evt) {
+            if (evt.detail.xhr.status === 404 && evt.detail.target.id === 'main-content') {
+                evt.detail.shouldSwap = true;
+                evt.detail.isError = false;
+            }
+        });
 
         // htmx swaps only #main-content, so title, canonical URL, focus and the
         // screen-reader announcement all have to be updated by hand.
@@ -365,6 +256,8 @@
             if (canonical) canonical.setAttribute('href', 'https://atharva-kawade.com' + meta.path);
 
             markActiveSection(meta.section_id);
+
+            document.body.dataset.section = meta.section_id;
 
             const main = document.getElementById('main-content');
             main.focus();
