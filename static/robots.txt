@@ -6,6 +6,7 @@ Disallow: /venv/
 Disallow: /.git/
 Disallow: /migrations/
 Disallow: /static/
+Disallow: /_/
 Disallow: /api/private/
 Disallow: /*.py$
 Disallow: *.env
@@ -13,46 +14,57 @@ Disallow: *.env
 # Specific LLM/AI Crawlers - Allow comprehensive indexing
 User-agent: GPTBot
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: CCBot
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: Googlebot
 Allow: /
+Disallow: /_/
 Crawl-delay: 0
 
 User-agent: Googlebot-Mobile
 Allow: /
+Disallow: /_/
 Crawl-delay: 0
 
 User-agent: bingbot
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 User-agent: Baiduspider
 Allow: /
+Disallow: /_/
 Crawl-delay: 1
 
 # Sitemap Location
@@ -66,4 +78,5 @@ Request-rate: 30/60
 # Prevent crawling of comment spam and tracking
 User-agent: MJ12bot
 Allow: /
+Disallow: /_/
 Crawl-delay: 10

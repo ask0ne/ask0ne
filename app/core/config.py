@@ -4,7 +4,9 @@ import pickle
 from datetime import datetime, timedelta
 from typing import Optional, Any, Dict
 from functools import wraps
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exception_handlers import http_exception_handler
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -39,6 +41,15 @@ def create_app() -> FastAPI:
 
         app.add_api_route(f"/{filename}", make_handler(), include_in_schema=False)
     
+    @app.exception_handler(StarletteHTTPException)
+    async def styled_not_found(request: Request, exc: StarletteHTTPException):
+        """Page requests (browser navigation, htmx) get the site's own 404; images, assets and APIs keep the plain one."""
+        wants_page = request.headers.get("hx-request") is not None or "text/html" in request.headers.get("accept", "")
+        if exc.status_code != 404 or not wants_page:
+            return await http_exception_handler(request, exc)
+        from app.routes.sections import render_section  # lazy: sections imports this module
+        return render_section(request, "notfound", status_code=404)
+
     return app
 
 # Caching configuration

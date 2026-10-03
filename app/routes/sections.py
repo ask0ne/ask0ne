@@ -1,9 +1,10 @@
 import json
 
 from fastapi import APIRouter, Request, HTTPException
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from app.core.config import templates
 from app.services.markdown_blog import MarkdownBlogService
+from app.services import private_media
 from app.models.contact import ContactForm
 from app.services.email import send_contact_email, send_auto_reply_email
 
@@ -16,7 +17,13 @@ SECTION_META = {
         "template": "sections/me.html",
         "path": "/me",
         "title": "atharva kawade - software engineer & ai optimist",
-        "description": "software engineer with 4+ years in early stage startups, currently at arise. previously oleander and mortgage kart.",
+        "description": "software engineer with 5+ years in early stage startups, currently at arise. previously oleander and mortgage kart.",
+    },
+    "notfound": {
+        "template": "404.html",
+        "path": "/",
+        "title": "not found - atharva kawade",
+        "description": "this page doesn't exist.",
     },
     "work": {
         "template": "sections/work.html",
@@ -60,14 +67,14 @@ def is_htmx_request(request: Request) -> bool:
     """Check if request is coming from HTMX"""
     return request.headers.get("hx-request") is not None
 
-def render_section(request: Request, section_id: str, **extra_context):
+def render_section(request: Request, section_id: str, status_code: int = 200, **extra_context):
     """Render a section as an HTMX partial or a full page, carrying page metadata either way"""
     meta = SECTION_META[section_id]
     context = {"request": request, "section_id": section_id, **extra_context}
 
     if is_htmx_request(request):
         # Return partial template for HTMX requests
-        response = templates.TemplateResponse(meta["template"], context)
+        response = templates.TemplateResponse(meta["template"], context, status_code=status_code)
         response.headers["HX-Trigger"] = json.dumps({
             "pageMeta": {
                 "title": meta["title"],
@@ -85,16 +92,24 @@ def render_section(request: Request, section_id: str, **extra_context):
         "page_description": meta["description"],
         "canonical_path": meta["path"],
     })
-    return templates.TemplateResponse("base.html", context)
+    return templates.TemplateResponse("base.html", context, status_code=status_code)
 
-@router.get("/", response_class=HTMLResponse)
-async def home(request: Request):
-    return render_section(request, "me")
+# templates sign private image urls themselves: {{ private_url('bike') }}
+templates.env.globals["private_url"] = private_media.signed_url
 
 # Individual routes for each section with clean URLs
+@router.get("/", response_class=HTMLResponse)
 @router.get("/me", response_class=HTMLResponse)
 async def get_me_section(request: Request):
     return render_section(request, "me")
+
+@router.get("/_/p/{name}/{token}", include_in_schema=False)
+async def get_private_image(request: Request, name: str, token: str):
+    """Signed, short-lived private image. Every refusal looks like a plain 404."""
+    path = private_media.resolve(name, token) if private_media.is_allowed_request(request.headers) else None
+    if path is None:
+        raise HTTPException(status_code=404)
+    return FileResponse(path, media_type="image/jpeg", headers=private_media.HEADERS)
 
 @router.get("/work", response_class=HTMLResponse)
 async def get_work_section(request: Request):
