@@ -33,7 +33,18 @@ class BlogPost:
     @property
     def text(self) -> str:
         """Return rendered HTML content from markdown"""
-        return markdown.markdown(self.content).lower()
+        html = markdown.markdown(self.content, extensions=["fenced_code"])
+        parts = re.split(r"(<pre>.*?</pre>)", html, flags=re.S)
+        out = []
+        for part in parts:
+            if part.startswith('<pre><code class="language-prompt">'):
+                hidden = part.replace("<pre>", "<pre hidden>", 1)
+                out.append('<div class="code prompt"><button type="button" class="act copy">copy prompt</button>' + hidden + '</div>')
+            elif part.startswith("<pre>"):
+                out.append('<div class="code">' + part + '<button type="button" class="act copy" aria-label="copy">copy</button></div>')
+            else:
+                out.append(part.lower())
+        return "".join(out)
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert post to dictionary for template rendering"""

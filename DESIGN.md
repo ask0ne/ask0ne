@@ -133,16 +133,18 @@ htmx swaps only `#main-content`; page meta travels via `SECTION_META` in
 
 | component | class | notes |
 |---|---|---|
-| nav | `.v2-nav` / `.nav-link` | text links, dim; current page = clay + 2px underline bar. Five links, always visible, no hamburger. Theme toggle `(■_■¬)` right. |
+| brand | `.v2-brand` | the whelmedthinker wordmark (outlined SVGs in `assets/brand/`, light and dark files swapped on the `dark` class), centred above the nav, `13rem` wide (`11rem` on phones), links home. Hidden on the legacy whelmed/cases pages. |
+| nav | `.v2-nav` / `.nav-link` | text links, dim; current page = clay + 2px underline bar. Five links, always visible, no hamburger; below `44rem` the nav drops to the subtext size and below `30rem` it spreads evenly, so the links and toggle fit down to 320px. Theme toggle `(■_■¬)` right. |
 | page header | `header.h` | `h1` clay heading + optional `.sub`. `.has-act` adds one action on the right (cv download). |
-| row | `.row` | label column + content, hairline on top. `.row.solo` = full width, no label. `.row.tight` = skills rows only. |
+| row | `.row` | label column + content, hairline on top. `.row.solo` = full width, no label. `.row.tight` = denser padding: cv skills and work rows. |
 | label | `.lab` | subtext mono faint: year, date, field name. |
 | group heading | `.grp` | **one** component for thoughts years, work years and cv section titles: subheading role, mono bold, clay, letter-spaced. |
 | row title | `h2`/`h3` in `.row` | subheading role; link = clay + underline (`↗` suffix if external); non-link = ink. |
 | tag | `.tags li` | the only pill. Subtext mono, hairline outline, no `#`. Used identically on work, thoughts list and post header. |
 | stat card | `.stat` | the only card. `--paper` fill, hairline, `--r-md`. Cv summary only. |
 | toggle | `.tg` | clay text button + chevron. Smooth accordion (`.more`, grid-template-rows). |
-| action | `.act` | clay text + small icon, same look as `.tg` (cv "download"). |
+| action | `.act` | clay text + small icon, same look as `.tg` (cv "download"). Also a `<button class="act">` (the talk dialog's "send"). Actions sit in `.acts` (flex, `--sp-5` gap); in work rows `.rh` puts the title and `.acts` on one line (the action wraps under the title on phones). |
+| dialog | `.talk` | native `<dialog>` (esc, focus trap, backdrop click closes): `--paper`, hairline, `--r-md`, no shadow. Fields are bare input/textarea with the question as placeholder + `aria-label` (`--bg` fill, hairline, `--r-sm`, clay focus ring). Actions sit bottom-right, `.tg` cancel then `.act` send; status line is `.meta`. Opened by an inline `.bike-t` trigger. Work page "let's talk" only; posts to `/talk` (plain-text mail, env-configured, rate limited, honeypot). |
 | back link | `.back` | same look as `.tg`, arrow nudges left on hover. |
 | bullets | `ul.jobs`, `.post-body ul` | disc, clay marker, dim text. |
 | progress bar | `.bar` | 3px, line track, clay fill; work "why" panel only. |
@@ -255,7 +257,7 @@ The repo is **public**. Anything committed is public and scrapable.
 **New page**
 1. Add an entry to `SECTION_META` and a route in `app/routes/sections.py`.
 2. Create `templates/sections/<name>.html` using the skeleton in section 4.
-3. Add the nav link in `templates/base.html` (keep five-ish links, lowercase).
+3. Add the nav link in `templates/base.html` (keep it to about six links, lowercase).
 4. Use only catalogue components. Give it one quirk line.
 
 **New content row** (project, post, tangent, job): copy an existing row of
@@ -304,6 +306,7 @@ Run these against a local server (`uvicorn main:app --port 8000`).
 ---
 
 ## 13. Decision log (why things are the way they are)
+
 
 - One width + one row pattern across pages: variants with different widths
   looked inconsistent ("hot glob of mess").

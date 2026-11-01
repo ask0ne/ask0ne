@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import List
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from jinja2 import Environment, FileSystemLoader
-from app.models.contact import ContactForm
+from app.models.contact import ContactForm, TalkForm
 
 # Set up Jinja2 environment for email templates
 template_env = Environment(loader=FileSystemLoader('templates/emails'))
@@ -89,4 +89,23 @@ async def send_auto_reply_email(form_data: ContactForm) -> bool:
         
     except Exception as e:
         print(f"Failed to send auto-reply email: {str(e)}")
+        return False
+
+
+async def send_talk_email(form: TalkForm, reply_to: str | None) -> bool:
+    """Plain-text note from the work page's "let's talk" dialog. Sender and recipient come from env."""
+    try:
+        body = f"who: {form.who}\n\n{form.what}\n\nsent {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} from the site"
+        message = MessageSchema(
+            subject="let's talk (from the site)",
+            recipients=[os.environ["CONTACT_EMAIL"]],
+            body=body,
+            subtype="plain",
+            from_name="whelmedthinker",
+            reply_to=[reply_to] if reply_to else [],
+        )
+        await fm.send_message(message)
+        return True
+    except Exception as e:
+        print(f"Failed to send talk email: {str(e)}")
         return False

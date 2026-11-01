@@ -1,12 +1,16 @@
+import ipaddress
 import json
+import os
+import re
+import time
 
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from app.core.config import templates
 from app.services.markdown_blog import MarkdownBlogService
 from app.services import private_media
-from app.models.contact import ContactForm
-from app.services.email import send_contact_email, send_auto_reply_email
+from app.models.contact import ContactForm, TalkForm
+from app.services.email import send_contact_email, send_auto_reply_email, send_talk_email
 
 router = APIRouter()
 
@@ -63,6 +67,9 @@ SECTION_META = {
     },
 }
 
+# the nav reads titles and descriptions from here, so browser back/forward can restore them
+templates.env.globals["section_meta"] = SECTION_META
+
 def is_htmx_request(request: Request) -> bool:
     """Check if request is coming from HTMX"""
     return request.headers.get("hx-request") is not None
@@ -96,6 +103,8 @@ def render_section(request: Request, section_id: str, status_code: int = 200, **
 
 # templates sign private image urls themselves: {{ private_url('bike') }}
 templates.env.globals["private_url"] = private_media.signed_url
+# css/js links carry the file mtime so an edit is never served from a stale browser cache
+templates.env.globals["asset_v"] = lambda path: int(os.path.getmtime(path))
 
 # Individual routes for each section with clean URLs
 @router.get("/", response_class=HTMLResponse)
@@ -152,6 +161,49 @@ async def redirect_mindfield_to_tangents(request: Request):
     """Redirect old mindfield URL to tangents"""
     from fastapi.responses import RedirectResponse
     return RedirectResponse(url="/tangents", status_code=301)
+
+TALK_LIMIT, TALK_WINDOW = 5, 3600  # per ip per hour; in memory, resets on restart
+TALK_GLOBAL_LIMIT, TALK_MAX_KEYS = 30, 5000  # hard cap on mails per hour across everyone
+_talk_hits: dict[str, list[float]] = {}
+_talk_all: list[float] = []
+
+def _talk_key(request: Request) -> str:
+    """Client key for the rate limit. The last x-forwarded-for entry is the one our own proxy
+    appended, earlier ones are client-supplied. IPv6 clients share a /64 so one host can't mint keys."""
+    peer = request.client.host if request.client else "unknown"
+    raw = request.headers.get("x-forwarded-for", peer).split(",")[-1].strip()
+    try:
+        ip = ipaddress.ip_address(raw)
+    except ValueError:  # junk header: fall back to the direct peer instead of keying on attacker text
+        try:
+            ip = ipaddress.ip_address(peer)
+        except ValueError:
+            return "unknown"
+    if ip.version == 6 and ip.ipv4_mapped:  # dual-stack proxies report v4 clients as ::ffff:a.b.c.d
+        ip = ip.ipv4_mapped
+    return str(ipaddress.ip_network(f"{ip}/64", strict=False)) if ip.version == 6 else str(ip)
+
+@router.post("/talk", include_in_schema=False)
+async def submit_talk_form(request: Request, form: TalkForm):
+    """The work page's "let's talk" dialog: who + what, mailed to the owner"""
+    if form.website:  # honeypot tripped: pretend it worked
+        return JSONResponse({"ok": True})
+    now = time.time()
+    key = _talk_key(request)
+    _talk_all[:] = [t for t in _talk_all if now - t < TALK_WINDOW]
+    if len(_talk_hits) >= TALK_MAX_KEYS:  # drop only expired keys, never everyone's counters
+        for k in [k for k, v in _talk_hits.items() if not v or now - v[-1] >= TALK_WINDOW]:
+            del _talk_hits[k]
+    hits = [t for t in _talk_hits.get(key, []) if now - t < TALK_WINDOW]
+    if len(_talk_all) >= TALK_GLOBAL_LIMIT or len(hits) >= TALK_LIMIT \
+            or (key not in _talk_hits and len(_talk_hits) >= TALK_MAX_KEYS):
+        return JSONResponse({"ok": False}, status_code=429)
+    _talk_hits[key] = hits + [now]
+    _talk_all.append(now)
+    who = form.who.strip()
+    reply_to = who if re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", who) else None
+    sent = await send_talk_email(form, reply_to)
+    return JSONResponse({"ok": sent}, status_code=200 if sent else 500)
 
 @router.post("/contact")
 async def submit_contact_form(form_data: ContactForm):
