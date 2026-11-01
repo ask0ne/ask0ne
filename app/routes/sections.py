@@ -1,3 +1,4 @@
+import ipaddress
 import json
 import os
 import re
@@ -162,22 +163,43 @@ async def redirect_mindfield_to_tangents(request: Request):
     return RedirectResponse(url="/tangents", status_code=301)
 
 TALK_LIMIT, TALK_WINDOW = 5, 3600  # per ip per hour; in memory, resets on restart
+TALK_GLOBAL_LIMIT, TALK_MAX_KEYS = 30, 5000  # hard cap on mails per hour across everyone
 _talk_hits: dict[str, list[float]] = {}
+_talk_all: list[float] = []
+
+def _talk_key(request: Request) -> str:
+    """Client key for the rate limit. The last x-forwarded-for entry is the one our own proxy
+    appended, earlier ones are client-supplied. IPv6 clients share a /64 so one host can't mint keys."""
+    peer = request.client.host if request.client else "unknown"
+    raw = request.headers.get("x-forwarded-for", peer).split(",")[-1].strip()
+    try:
+        ip = ipaddress.ip_address(raw)
+    except ValueError:  # junk header: fall back to the direct peer instead of keying on attacker text
+        try:
+            ip = ipaddress.ip_address(peer)
+        except ValueError:
+            return "unknown"
+    if ip.version == 6 and ip.ipv4_mapped:  # dual-stack proxies report v4 clients as ::ffff:a.b.c.d
+        ip = ip.ipv4_mapped
+    return str(ipaddress.ip_network(f"{ip}/64", strict=False)) if ip.version == 6 else str(ip)
 
 @router.post("/talk", include_in_schema=False)
 async def submit_talk_form(request: Request, form: TalkForm):
     """The work page's "let's talk" dialog: who + what, mailed to the owner"""
     if form.website:  # honeypot tripped: pretend it worked
         return JSONResponse({"ok": True})
-    # the last x-forwarded-for entry is the one our own proxy appended; earlier ones are client-supplied
-    ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "x").split(",")[-1].strip()
     now = time.time()
-    if len(_talk_hits) > 5000:
-        _talk_hits.clear()
-    hits = [t for t in _talk_hits.get(ip, []) if now - t < TALK_WINDOW]
-    if len(hits) >= TALK_LIMIT:
+    key = _talk_key(request)
+    _talk_all[:] = [t for t in _talk_all if now - t < TALK_WINDOW]
+    if len(_talk_hits) >= TALK_MAX_KEYS:  # drop only expired keys, never everyone's counters
+        for k in [k for k, v in _talk_hits.items() if not v or now - v[-1] >= TALK_WINDOW]:
+            del _talk_hits[k]
+    hits = [t for t in _talk_hits.get(key, []) if now - t < TALK_WINDOW]
+    if len(_talk_all) >= TALK_GLOBAL_LIMIT or len(hits) >= TALK_LIMIT \
+            or (key not in _talk_hits and len(_talk_hits) >= TALK_MAX_KEYS):
         return JSONResponse({"ok": False}, status_code=429)
-    _talk_hits[ip] = hits + [now]
+    _talk_hits[key] = hits + [now]
+    _talk_all.append(now)
     who = form.who.strip()
     reply_to = who if re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", who) else None
     sent = await send_talk_email(form, reply_to)
