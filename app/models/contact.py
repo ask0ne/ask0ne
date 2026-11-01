@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 
 class ContactForm(BaseModel):
@@ -16,3 +16,9 @@ class ContactForm(BaseModel):
                 "message": "I'm interested in your AI automation services."
             }
         }
+
+
+class TalkForm(BaseModel):
+    who: str = Field(min_length=3, max_length=200)
+    what: str = Field(min_length=1, max_length=2000)
+    website: str = ""  # honeypot: real visitors never fill it

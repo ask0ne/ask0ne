@@ -15,30 +15,69 @@
 <div class="v2">
     <header class="h">
         <h1>work</h1>
-        <p class="sub">journaling stuff i build (or want to). always open for mmorpgs or co-op.</p>
+        <p class="sub">journaling stuff i build (or want to). like this? <button type="button" class="bike-t" aria-haspopup="dialog" onclick="document.getElementById('talk').showModal()">let's talk</button>.</p>
     </header>
 
     <div>
         {% for p in projects %}
         <h2 class="grp">{{ p.year }}</h2>
-        <article class="row">
+        <article class="row tight">
             <div class="lab" title="self-assessed">{{ p.pct }}%</div>
             <div>
-                <h2><a href="https://github.com/ask0ne/{{ p.slug }}" target="_blank" rel="noopener noreferrer">{{ p.slug }} ↗</a></h2>
+                <div class="rh">
+                    <h2><a href="https://github.com/ask0ne/{{ p.slug }}" target="_blank" rel="noopener noreferrer">{{ p.slug }} ↗</a></h2>
+                    <div class="acts"><button type="button" class="tg" aria-expanded="false" aria-controls="details-{{ p.slug }}" onclick="toggleDetails(this)">why i built it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+                </div>
                 <p>{{ p.blurb }}</p>
                 <ul class="tags">{% for t in p.tags %}<li>{{ t }}</li>{% endfor %}</ul>
-                <button type="button" class="tg" aria-expanded="false" aria-controls="details-{{ p.slug }}" onclick="toggleDetails(this)">why i built it <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 <div id="details-{{ p.slug }}" class="more"><div><div class="in"><p>{{ p.why }}</p><div class="bar" style="--p:{{ p.pct }}%" aria-hidden="true"><i></i></div></div></div></div>
             </div>
         </article>
         {% endfor %}
     </div>
     <p class="quirk">three projects. one progress bar is a vibe, not a measurement.</p>
+
+    <dialog id="talk" class="talk" aria-labelledby="talk-h" onclick="if (event.target === this) this.close()">
+        <form onsubmit="talkSend(event)">
+            <h2 id="talk-h">let's talk</h2>
+            <input id="talk-who" name="who" type="text" maxlength="200" required autocomplete="off" aria-label="how can i get back?" placeholder="how can i get back?">
+            <textarea id="talk-what" name="what" rows="6" maxlength="2000" required aria-label="what should i know?" placeholder="what should i know?"></textarea>
+            <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="acts">
+                <button type="button" class="tg" onclick="document.getElementById('talk').close()">cancel</button>
+                <button type="submit" class="act"><span>send</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <p class="meta" id="talk-s" role="status"></p>
+        </form>
+    </dialog>
 </div>
+
 
 <script>
 function toggleDetails(button) {
     const open = document.getElementById(button.getAttribute('aria-controls')).classList.toggle('open');
     button.setAttribute('aria-expanded', String(open));
+}
+
+async function talkSend(e) {
+    e.preventDefault();
+    const f = e.target, label = f.querySelector('button[type=submit] span'), status = document.getElementById('talk-s');
+    label.textContent = 'sending';
+    status.textContent = '';
+    try {
+        const r = await fetch('/talk', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ who: f.who.value, what: f.what.value, website: f.website.value })
+        });
+        if (r.status === 429) { status.textContent = 'a few too many. try again later.'; label.textContent = 'send'; return; }
+        if (!r.ok) throw new Error(r.status);
+        f.reset();
+        status.textContent = 'sent. thanks.';
+        setTimeout(() => { document.getElementById('talk').close(); status.textContent = ''; }, 1400);
+    } catch (err) {
+        status.textContent = "didn't go through. try again.";
+    }
+    label.textContent = 'send';
 }
 </script>

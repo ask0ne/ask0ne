@@ -45,7 +45,8 @@
     <meta property="twitter:creator" content="@atharva_kawade">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -61,7 +62,7 @@
     <script src="https://unpkg.com/htmx.org@1.9.8"></script>
     <script src="/static/js/contact-utils.js"></script>
     <link rel="stylesheet" href="/assets/css/utilities.css">
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="/assets/css/site.css?v={{ asset_v('assets/css/site.css') }}">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -136,12 +137,20 @@
 </head>
 
 <body class="v2-body min-h-screen transition-colors duration-200 font-sans" data-section="{{ section_id|default('') }}">
+    <!-- Brand -->
+    <div class="v2-brand">
+        <a href="/" hx-get="/me" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true" aria-label="whelmedthinker, home">
+            <img class="on-light" src="/assets/brand/whelmedthinker-light.svg" alt="whelmedthinker" width="208" height="30">
+            <img class="on-dark" src="/assets/brand/whelmedthinker-dark.svg" alt="" width="208" height="30" aria-hidden="true">
+        </a>
+    </div>
+
     <!-- Navigation -->
     <nav aria-label="Main" class="v2-nav">
         <div class="v2-navin">
             {% for s in ['me', 'work', 'thoughts', 'tangents', 'cv'] %}
             <a href="/{{ s }}" hx-get="/{{ s }}" hx-target="#main-content" hx-indicator="#loading" hx-push-url="true"
-                data-section="{{ s }}" class="nav-link lowercase">{{ s }}</a>
+                data-section="{{ s }}" data-title="{{ section_meta[s].title }}" data-description="{{ section_meta[s].description }}" class="nav-link lowercase">{{ s }}</a>
             {% endfor %}
             <span class="sp"></span>
             <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
@@ -243,27 +252,69 @@
             }
         });
 
-        // htmx swaps only #main-content, so title, canonical URL, focus and the
-        // screen-reader announcement all have to be updated by hand.
-        document.body.addEventListener('pageMeta', function (evt) {
-            const meta = evt.detail;
+        // htmx swaps only #main-content, so title, canonical URL and the active nav
+        // item have to be updated by hand.
+        function applyMeta(meta) {
             document.title = meta.title;
 
             const description = document.querySelector('meta[name="description"]');
-            if (description) description.setAttribute('content', meta.description);
+            if (description && meta.description) description.setAttribute('content', meta.description);
 
             const canonical = document.querySelector('link[rel="canonical"]');
             if (canonical) canonical.setAttribute('href', 'https://atharva-kawade.com' + meta.path);
 
             markActiveSection(meta.section_id);
-
             document.body.dataset.section = meta.section_id;
+        }
+
+        document.body.addEventListener('pageMeta', function (evt) {
+            const meta = evt.detail;
+            applyMeta(meta);
 
             const main = document.getElementById('main-content');
             main.focus();
             window.scrollTo(0, 0);
 
             document.getElementById('route-announcer').textContent = meta.title + ' loaded';
+        });
+
+        // Browser back/forward restores the old page body but not the title, the
+        // nav highlight or body[data-section]; rebuild them from the url.
+        const navMeta = {};
+        document.querySelectorAll('.nav-link').forEach(link => {
+            navMeta[link.dataset.section] = { title: link.dataset.title, description: link.dataset.description };
+        });
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.post-body .copy');
+            if (!btn) return;
+            const text = btn.parentElement.querySelector('pre').textContent.trim();
+            const label = btn.textContent;
+            const done = ok => {
+                btn.textContent = ok ? 'copied' : 'press ctrl+c';
+                setTimeout(() => { btn.textContent = label; }, 1500);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => done(true), () => done(false));
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+                document.body.appendChild(ta); ta.select();
+                let ok = false;
+                try { ok = document.execCommand('copy'); } catch (err) {}
+                ta.remove(); done(ok);
+            }
+        });
+        document.body.addEventListener('htmx:historyRestore', function () {
+            const parts = location.pathname.split('/').filter(Boolean);
+            const section = parts[0] || 'me';
+            const base = navMeta[section];
+            const heading = document.querySelector('#main-content h1');
+            applyMeta({
+                title: parts.length > 1 && heading ? heading.textContent.trim() + ' - atharva kawade' : (base ? base.title : document.title),
+                description: parts.length > 1 || !base ? null : base.description,
+                path: location.pathname,
+                section_id: base ? section : ''
+            });
         });
     </script>
 </body>

@@ -1,12 +1,15 @@
 import json
+import os
+import re
+import time
 
 from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from app.core.config import templates
 from app.services.markdown_blog import MarkdownBlogService
 from app.services import private_media
-from app.models.contact import ContactForm
-from app.services.email import send_contact_email, send_auto_reply_email
+from app.models.contact import ContactForm, TalkForm
+from app.services.email import send_contact_email, send_auto_reply_email, send_talk_email
 
 router = APIRouter()
 
@@ -63,6 +66,9 @@ SECTION_META = {
     },
 }
 
+# the nav reads titles and descriptions from here, so browser back/forward can restore them
+templates.env.globals["section_meta"] = SECTION_META
+
 def is_htmx_request(request: Request) -> bool:
     """Check if request is coming from HTMX"""
     return request.headers.get("hx-request") is not None
@@ -96,6 +102,8 @@ def render_section(request: Request, section_id: str, status_code: int = 200, **
 
 # templates sign private image urls themselves: {{ private_url('bike') }}
 templates.env.globals["private_url"] = private_media.signed_url
+# css/js links carry the file mtime so an edit is never served from a stale browser cache
+templates.env.globals["asset_v"] = lambda path: int(os.path.getmtime(path))
 
 # Individual routes for each section with clean URLs
 @router.get("/", response_class=HTMLResponse)
@@ -152,6 +160,28 @@ async def redirect_mindfield_to_tangents(request: Request):
     """Redirect old mindfield URL to tangents"""
     from fastapi.responses import RedirectResponse
     return RedirectResponse(url="/tangents", status_code=301)
+
+TALK_LIMIT, TALK_WINDOW = 5, 3600  # per ip per hour; in memory, resets on restart
+_talk_hits: dict[str, list[float]] = {}
+
+@router.post("/talk", include_in_schema=False)
+async def submit_talk_form(request: Request, form: TalkForm):
+    """The work page's "let's talk" dialog: who + what, mailed to the owner"""
+    if form.website:  # honeypot tripped: pretend it worked
+        return JSONResponse({"ok": True})
+    # the last x-forwarded-for entry is the one our own proxy appended; earlier ones are client-supplied
+    ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "x").split(",")[-1].strip()
+    now = time.time()
+    if len(_talk_hits) > 5000:
+        _talk_hits.clear()
+    hits = [t for t in _talk_hits.get(ip, []) if now - t < TALK_WINDOW]
+    if len(hits) >= TALK_LIMIT:
+        return JSONResponse({"ok": False}, status_code=429)
+    _talk_hits[ip] = hits + [now]
+    who = form.who.strip()
+    reply_to = who if re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", who) else None
+    sent = await send_talk_email(form, reply_to)
+    return JSONResponse({"ok": sent}, status_code=200 if sent else 500)
 
 @router.post("/contact")
 async def submit_contact_form(form_data: ContactForm):
