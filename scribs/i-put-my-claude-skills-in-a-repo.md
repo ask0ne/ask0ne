@@ -4,11 +4,11 @@ date: 2026-11-01T12:00:00
 tags: ["claude", "tools"]
 ---
 
-in [my last post](/thoughts/microdecisions-and-llms) i said i'd keep selecting files by hand instead of using agent mode, like an ape. i have been using [orca](https://www.onorca.dev) for the past few months and i'm not surprised it aged like milk. (the ape is fine, thanks for asking)
+i have been using [orca](https://www.onorca.dev) for the past few months...and am not surprised that my [last post](/thoughts/microdecisions-and-llms) aged like milk (the ape is fine, thanks for asking)
 
 since then i have multiple claude code sessions open all day (worktrees ftw!), and i haven't opened vscode for anything except updating env variables.
 
-on this journey i think people underestimate how hard agents are to master. they're easy to learn and difficult to master, a bit like driving. the gap between an average driver and a professional racer is skill, and sometimes the vehicle. when [linus torvalds used an llm and clocked a 23x jump](https://www.tomshardware.com/software/linux/linus-torvalds-posts-his-first-llm-assisted-patch-to-the-linux-kernel-after-issuing-clear-pro-ai-directives-the-bossman-makes-use-of-ai-tooling-himself). in the end it's just a tool, and how you wield it matters.
+on this journey i think people underestimate how hard agents are to master. they're easy to learn and difficult to master, a bit like driving. the gap between an average driver and a professional racer is skill, and sometimes the vehicle. for example when [linus torvalds used an llm and clocked a 23x jump](https://www.tomshardware.com/software/linux/linus-torvalds-posts-his-first-llm-assisted-patch-to-the-linux-kernel-after-issuing-clear-pro-ai-directives-the-bossman-makes-use-of-ai-tooling-himself). but for npcs like us it's not that bad and in the end it's just a tool, and how you wield it matters.
 
 so, here's my stash (sort of)
 
